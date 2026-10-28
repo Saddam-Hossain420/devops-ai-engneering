@@ -1,0 +1,15 @@
+{
+  "blockdevices": [
+    {"name": "sda", "size": 53687091200, "type": "disk", "fstype": null, "mountpoints": [null],
+     "children": [
+       {"name": "sda1", "size": 1127219200, "type": "part", "fstype": "vfat", "mountpoints": ["/boot/efi"]},
+       {"name": "sda2", "size": 2147483648, "type": "part", "fstype": "ext4", "mountpoints": ["/boot"]},
+       {"name": "sda3", "size": 50410291200, "type": "part", "fstype": "LVM2_member", "mountpoints": [null],
+        "children": [
+          {"name": "ubuntu--vg-ubuntu--lv", "size": 26843545600, "type": "lvm", "fstype": "ext4", "mountpoints": ["/"]}
+        ]}
+     ]},
+    {"name": "sdb", "size": 21474836480, "type": "disk", "fstype": null, "mountpoints": [null]},
+    {"name": "loop0", "size": 77385728, "type": "loop", "fstype": "squashfs", "mountpoints": ["/snap/core22/1621"]}
+  ]
+}

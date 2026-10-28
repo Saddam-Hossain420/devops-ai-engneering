@@ -1,0 +1,32 @@
+# Template: SLO-ভিত্তিক alert rule (Prometheus rule file)
+# Symptom-এ alert করুন (user কী অনুভব করছে), cause-এ নয়।
+groups:
+  - name: example-api-slo
+    rules:
+      - record: job:http_requests:error_ratio_5m
+        expr: |
+          sum by (job) (rate(http_requests_total{status=~"5.."}[5m]))
+          /
+          sum by (job) (rate(http_requests_total[5m]))
+
+      - alert: ExampleApiHighErrorRate
+        # 99.9% SLO-তে 14.4x burn rate = ~২ দিনে মাসিক budget শেষ
+        expr: job:http_requests:error_ratio_5m{job="example-api"} > (14.4 * 0.001)
+        for: 5m
+        labels:
+          severity: page
+        annotations:
+          summary: "example-api 5xx error rate বেশি"
+          description: "৫ মিনিটে error ratio {{ $value | humanizePercentage }}"
+          runbook_url: "https://example.invalid/runbooks/example-api-high-error-rate"
+
+      - alert: ExampleApiHighLatencyP95
+        expr: |
+          histogram_quantile(0.95,
+            sum by (le) (rate(http_request_duration_seconds_bucket{job="example-api"}[5m]))
+          ) > 0.5
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "example-api p95 latency 500ms-এর বেশি"

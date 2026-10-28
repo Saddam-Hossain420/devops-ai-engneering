@@ -1,0 +1,42 @@
+# /etc/systemd/system/taskflow.service
+# TaskFlow API (L05-13) — taskflow.socket থেকে activation; app code /opt/taskflow-এ, data /var/lib/taskflow-এ।
+
+[Unit]
+Description=TaskFlow API (L06-05)
+Documentation=https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
+Requires=taskflow.socket
+After=network.target taskflow.socket
+
+[Service]
+Type=simple
+User=taskflow
+Group=taskflow
+WorkingDirectory=/opt/taskflow
+Environment=TASKFLOW_DB=/var/lib/taskflow/taskflow.db
+Environment=TASKFLOW_LOG_LEVEL=info
+ExecStart=/usr/bin/python3 /opt/taskflow/taskflow_serve.py
+StateDirectory=taskflow
+StateDirectoryMode=0750
+Restart=on-failure
+RestartSec=2
+KillSignal=SIGTERM
+TimeoutStopSec=15
+
+# Resource limits (L01-09)
+MemoryMax=256M
+TasksMax=64
+LimitNOFILE=4096
+
+# Hardening (L01-16) — socket systemd দেয়, তাই app-এর নিজের network bind লাগে না
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX
+CapabilityBoundingSet=
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

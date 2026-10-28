@@ -1,0 +1,19 @@
+{
+  "linux": 2,
+  "networking": 1,
+  "scripting": 1,
+  "containers": 1,
+  "cicd": 1,
+  "iac": 0,
+  "kubernetes": 0,
+  "cloud": 0,
+  "observability": 0,
+  "reliability": 0,
+  "security": 1,
+  "databases": 2,
+  "ml": 0,
+  "mlops": 0,
+  "llm_serving": 0,
+  "agents": 0,
+  "software_dev": 3
+}

@@ -1,0 +1,10 @@
+# হাতে তৈরি নমুনা inventory — IP-গুলো documentation range (RFC 5737), আসল host নয়
+name,ip,env,role,cpu,mem_gb,tags
+web-01,192.0.2.11,prod,web,2,4,nginx;public
+web-02,192.0.2.12,prod,web,2,4,nginx;public
+db-01,192.0.2.21,prod,db,4,16,postgres
+web-stg-01,198.51.100.11,staging,web,1,2,nginx
+db-stg-01,198.51.100.21,staging,db,2,4,postgres
+dev-box,203.0.113.5,dev,worker,2,8,
+web-01,192.0.2.99,prod,web,2,4,duplicate
+cache-01,192.0.2.300,prod,cache,2,4,redis

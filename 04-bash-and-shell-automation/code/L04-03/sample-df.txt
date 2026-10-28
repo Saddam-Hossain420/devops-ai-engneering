@@ -1,0 +1,8 @@
+Filesystem                Type     1024-blocks      Used Available Capacity Mounted on
+/dev/mapper/ubuntu--vg-root ext4     51290592  23085672  25567028      48% /
+tmpfs                     tmpfs       812680      1640    811040       1% /run
+/dev/sda2                 ext4       1992552    365864   1505448      20% /boot
+/dev/mapper/data-vol      xfs      104805376  87563200  17242176      84% /var/lib/postgresql
+/dev/sdb1                 ext4      20466256  19214360   1251896      94% /var/log
+overlay                   overlay   51290592  23085672  25567028      48% /var/lib/docker/overlay2/abc/merged
+/dev/sdc1                 ext4      10255636   1150220   8564744      12% /mnt/backup disk

@@ -1,0 +1,6 @@
+192.168.56.1 dev enp0s8 lladdr 0a:00:27:00:00:12 REACHABLE
+192.168.56.20 dev enp0s8 lladdr 08:00:27:5e:1a:c3 STALE
+192.168.56.30 dev enp0s8  FAILED
+10.0.2.2 dev enp0s3 lladdr 52:55:0a:00:02:02 router REACHABLE
+10.0.2.3 dev enp0s3 lladdr 52:55:0a:00:02:02 STALE
+fe80::a00:27ff:fe5e:1ac3 dev enp0s8 lladdr 08:00:27:5e:1a:c3 STALE

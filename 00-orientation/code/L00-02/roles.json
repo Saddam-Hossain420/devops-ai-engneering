@@ -1,0 +1,71 @@
+{
+  "_comment": "প্রতিটি role-এর জন্য skill-এর গুরুত্ব (weight 1-3) ও সংশ্লিষ্ট module। এটি শেখার সুবিধার জন্য সরলীকৃত model, কোনো official job standard নয়।",
+  "skills": {
+    "linux": "Linux system administration",
+    "networking": "Networking (TCP/IP, DNS, HTTP, TLS)",
+    "scripting": "Bash ও Python automation",
+    "containers": "Docker ও container",
+    "cicd": "CI/CD pipeline",
+    "iac": "Terraform / Ansible",
+    "kubernetes": "Kubernetes",
+    "cloud": "Cloud (AWS)",
+    "observability": "Monitoring, logging, tracing",
+    "reliability": "SLO, incident response, capacity",
+    "security": "Security ও IAM",
+    "databases": "Database ও distributed system",
+    "ml": "Machine learning fundamentals",
+    "mlops": "ML pipeline, registry, model serving",
+    "llm_serving": "LLM serving, GPU, inference performance",
+    "agents": "AI agent, MCP, safe automation",
+    "software_dev": "Software development ও testing"
+  },
+  "modules": {
+    "linux": ["01"],
+    "networking": ["02", "06"],
+    "scripting": ["04", "05"],
+    "containers": ["09", "10"],
+    "cicd": ["03", "11"],
+    "iac": ["12", "13"],
+    "kubernetes": ["14", "15"],
+    "cloud": ["07", "08", "28"],
+    "observability": ["17"],
+    "reliability": ["18", "30"],
+    "security": ["19"],
+    "databases": ["20", "21"],
+    "ml": ["23"],
+    "mlops": ["24"],
+    "llm_serving": ["25", "26"],
+    "agents": ["27"],
+    "software_dev": ["05", "03"]
+  },
+  "roles": {
+    "DevOps Engineer": {
+      "track": "A",
+      "weights": {"linux": 3, "networking": 2, "scripting": 3, "containers": 3, "cicd": 3, "iac": 2, "kubernetes": 2, "cloud": 2, "observability": 2, "security": 1}
+    },
+    "Cloud / Platform Engineer": {
+      "track": "B",
+      "weights": {"linux": 2, "networking": 3, "scripting": 2, "containers": 2, "cicd": 2, "iac": 3, "kubernetes": 3, "cloud": 3, "security": 2, "software_dev": 2}
+    },
+    "Site Reliability Engineer": {
+      "track": "C",
+      "weights": {"linux": 3, "networking": 3, "scripting": 2, "kubernetes": 2, "observability": 3, "reliability": 3, "databases": 2, "software_dev": 2}
+    },
+    "DevSecOps Engineer": {
+      "track": "D",
+      "weights": {"linux": 2, "networking": 2, "scripting": 2, "containers": 2, "cicd": 3, "iac": 2, "kubernetes": 2, "cloud": 2, "security": 3}
+    },
+    "MLOps Engineer": {
+      "track": "E",
+      "weights": {"scripting": 3, "containers": 2, "cicd": 2, "kubernetes": 1, "databases": 2, "ml": 3, "mlops": 3, "software_dev": 2}
+    },
+    "AI Infrastructure / LLMOps Engineer": {
+      "track": "F",
+      "weights": {"linux": 2, "networking": 2, "containers": 2, "kubernetes": 3, "observability": 2, "ml": 2, "mlops": 2, "llm_serving": 3, "cloud": 2}
+    },
+    "AI-Powered Operations Engineer": {
+      "track": "G",
+      "weights": {"linux": 2, "scripting": 3, "observability": 2, "reliability": 2, "security": 2, "llm_serving": 1, "agents": 3, "software_dev": 2}
+    }
+  }
+}

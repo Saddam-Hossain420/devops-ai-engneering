@@ -1,0 +1,13 @@
+{
+  "_comment": "হাতে তৈরি বর্ণনা: taskflow.socket unit (SocketUser=taskflow, SocketGroup=www-data, SocketMode=0660) ও RuntimeDirectory",
+  "users": {
+    "www-data": {"uid": 33, "groups": [33]},
+    "nobody": {"uid": 65534, "groups": [65534]}
+  },
+  "paths": {
+    "/": {"uid": 0, "gid": 0, "mode": "0755", "type": "dir"},
+    "/run": {"uid": 0, "gid": 0, "mode": "0755", "type": "dir"},
+    "/run/taskflow": {"uid": 0, "gid": 0, "mode": "0755", "type": "dir"},
+    "/run/taskflow/taskflow.sock": {"uid": 998, "gid": 33, "mode": "0660", "type": "socket"}
+  }
+}

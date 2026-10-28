@@ -1,0 +1,16 @@
+# /etc/systemd/system/ops-memcheck.service
+# One-shot job: records memory/load summary into the journal (L01-09 tool).
+[Unit]
+Description=Ops memory and load check (L01-11)
+
+[Service]
+Type=oneshot
+User=nobody
+Group=nogroup
+ExecStart=/usr/bin/python3 /opt/ops-toolkit/mem_report.py meminfo
+ExecStart=/usr/bin/python3 /opt/ops-toolkit/mem_report.py load
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+MemoryMax=64M

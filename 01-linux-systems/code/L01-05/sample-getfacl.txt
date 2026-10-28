@@ -1,0 +1,10 @@
+# file: srv/project/report.txt
+# owner: sami
+# group: developers
+user::rw-
+user:alice:rw-
+user:bob:r--
+group::r--
+group:auditors:r--
+mask::r--
+other::---

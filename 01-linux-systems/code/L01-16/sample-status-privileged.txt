@@ -1,0 +1,11 @@
+Name:	bash
+State:	S (sleeping)
+Pid:	1
+Uid:	0	0	0	0
+NoNewPrivs:	0
+Seccomp:	0
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000

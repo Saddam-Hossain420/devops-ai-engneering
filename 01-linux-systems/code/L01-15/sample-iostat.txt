@@ -1,0 +1,19 @@
+Linux 6.8.0-45-generic (devlab) 	10/26/2026 	_x86_64_	(4 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           5.10    0.00    2.20    1.10    0.00   91.60
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda              3.10     48.20     0.20   6.06    1.10    15.55    6.40     40.10     4.30  40.19    2.40     6.27    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00    0.02   1.20
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+          12.00    0.00    6.30   64.20    0.00   17.50
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda            610.00   9800.00     2.00   0.33   48.20    16.07   95.00   1200.00    10.00   9.52   61.50    12.63    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00   35.20  99.60
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+          10.50    0.00    6.80   67.10    0.00   15.60
+
+Device            r/s     rkB/s   rrqm/s  %rrqm r_await rareq-sz     w/s     wkB/s   wrqm/s  %wrqm w_await wareq-sz     d/s     dkB/s   drqm/s  %drqm d_await dareq-sz     f/s f_await  aqu-sz  %util
+sda            640.00  10240.00     1.00   0.16   52.70    16.00   88.00   1100.00     9.00   9.28   66.10    12.50    0.00      0.00     0.00   0.00    0.00     0.00    0.00    0.00   38.90  99.90

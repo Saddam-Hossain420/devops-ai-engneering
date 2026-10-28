@@ -1,0 +1,25 @@
+# Example combined /etc/sudoers + /etc/sudoers.d/* for an audit exercise.
+# This is NOT a recommended configuration — it contains deliberate mistakes.
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Defaults	use_pty
+
+root	ALL=(ALL:ALL) ALL
+%sudo	ALL=(ALL:ALL) ALL
+
+# deploy pipeline user
+deploy	ALL=(root) NOPASSWD: /usr/bin/systemctl restart taskflow, /usr/bin/systemctl status taskflow
+
+# "temporary" access granted during an incident and never removed
+contractor	ALL=(ALL) NOPASSWD: ALL
+
+# log reader
+support	ALL=(root) /usr/bin/less /var/log/*
+
+# backup operator
+backup	ALL=(root) NOPASSWD: tar -czf /backup/etc.tgz /etc, \
+	/usr/bin/find /var/www -name *.php
+
+Defaults:ci	env_keep += "LD_PRELOAD"
+@includedir /etc/sudoers.d

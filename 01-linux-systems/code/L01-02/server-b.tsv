@@ -1,0 +1,14 @@
+bash	5.2.21-2ubuntu4	1856
+coreutils	9.4-3ubuntu6	7064
+curl	8.5.0-2ubuntu10.1	452
+git	1:2.43.0-1ubuntu7.1	26214
+libc6:amd64	2.39-0ubuntu8.3	13372
+linux-image-6.8.0-45-generic	6.8.0-45.45	15418
+linux-modules-6.8.0-45-generic	6.8.0-45.45	101632
+openssh-server	1:9.6p1-3ubuntu13.5	2142
+openssl	3.0.13-0ubuntu3.1	2284
+python3	3.12.3-0ubuntu2	91
+python3.12	3.12.3-1ubuntu0.1	651
+snapd	2.63+24.04	117504
+telnetd	0.17+2.5-3ubuntu4	145
+vim	2:9.1.0016-1ubuntu7.2	4012

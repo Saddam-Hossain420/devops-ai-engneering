@@ -1,0 +1,6 @@
+---
+example_package: nginx
+example_service: nginx
+# Ubuntu: sites-available layout; Fedora: conf.d — playbook-এ override করুন
+example_config_path: /etc/nginx/conf.d/example.conf
+example_listen_port: 8080

@@ -1,0 +1,54 @@
+{
+  "_comment": "হাতে তৈরি উদাহরণ (কোনো আসল account নয়)। prod ও shared peered; dev-এর CIDR prod-এর সাথে overlap করে; কয়েকটি ইচ্ছাকৃত ভুল।",
+  "vpcs": {
+    "prod": {
+      "cidr": "10.0.0.0/16",
+      "igw": true,
+      "subnets": {
+        "prod-public-a": {"cidr": "10.0.0.0/24", "az": "a", "tier": "public", "route_table": "public"},
+        "prod-public-b": {"cidr": "10.0.1.0/24", "az": "b", "tier": "public", "route_table": "public"},
+        "prod-app-a": {"cidr": "10.0.10.0/24", "az": "a", "tier": "app", "route_table": "private"},
+        "prod-app-b": {"cidr": "10.0.11.0/24", "az": "b", "tier": "app", "route_table": "private"},
+        "prod-data-a": {"cidr": "10.0.20.0/24", "az": "a", "tier": "data", "route_table": "data"}
+      },
+      "nat_gateways": {"nat-a": {"subnet": "prod-public-a"}},
+      "route_tables": {
+        "public": [{"dest": "0.0.0.0/0", "target": "igw"}],
+        "private": [{"dest": "0.0.0.0/0", "target": "nat:nat-a"}, {"dest": "10.1.0.0/16", "target": "pcx:prod-shared"}],
+        "data": []
+      }
+    },
+    "shared": {
+      "cidr": "10.1.0.0/16",
+      "igw": false,
+      "subnets": {
+        "shared-tools": {"cidr": "10.1.2.0/24", "az": "a", "tier": "app", "route_table": "tools"},
+        "shared-metrics": {"cidr": "10.1.3.0/24", "az": "a", "tier": "app", "route_table": "metrics"}
+      },
+      "route_tables": {
+        "tools": [{"dest": "10.0.0.0/16", "target": "pcx:prod-shared"}],
+        "metrics": []
+      }
+    },
+    "dev": {
+      "cidr": "10.0.0.0/16",
+      "igw": true,
+      "subnets": {
+        "dev-public": {"cidr": "10.0.0.0/24", "az": "a", "tier": "public", "route_table": "public"}
+      },
+      "route_tables": {"public": [{"dest": "0.0.0.0/0", "target": "igw"}]}
+    }
+  },
+  "peerings": {
+    "prod-shared": ["prod", "shared"],
+    "dev-shared": ["dev", "shared"]
+  },
+  "instances": {
+    "web-1": {"subnet": "prod-public-a", "ip": "10.0.0.10", "public_ip": true},
+    "api-1": {"subnet": "prod-app-a", "ip": "10.0.10.5"},
+    "api-2": {"subnet": "prod-app-b", "ip": "10.0.11.5"},
+    "db-1": {"subnet": "prod-data-a", "ip": "10.0.20.7"},
+    "tools-1": {"subnet": "shared-tools", "ip": "10.1.2.10"},
+    "metrics-1": {"subnet": "shared-metrics", "ip": "10.1.3.10"}
+  }
+}

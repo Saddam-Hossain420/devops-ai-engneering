@@ -1,0 +1,11 @@
+# হাতে তৈরি উদাহরণ — একটি GPU inference server-এর host firewall (ইচ্ছাকৃত কয়েকটি ভুল সহ)
+# fw_sim.py audit দিয়ে ভুলগুলো খুঁজুন
+policy drop
+accept state established
+accept proto icmp
+accept proto tcp dport 22 src 10.0.0.0/8
+accept proto tcp dport 80,443
+drop proto tcp dport 22 src 10.20.0.0/16          # উদ্দেশ্য: এই subnet-কে SSH থেকে আটকানো
+accept proto tcp dport 443                         # আগের লাইনের পুনরাবৃত্তি
+accept proto tcp dport 11434                       # Ollama API — "শুধু test-এর জন্য খুলেছিলাম"
+accept proto tcp dport 9100 src 10.0.5.0/24        # node_exporter, শুধু monitoring subnet

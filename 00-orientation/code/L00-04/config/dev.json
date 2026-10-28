@@ -1,0 +1,9 @@
+{
+  "app": {
+    "debug": true,
+    "log_level": "debug"
+  },
+  "features": {
+    "new_dashboard": true
+  }
+}

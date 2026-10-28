@@ -1,0 +1,18 @@
+{
+  "app": {
+    "name": "taskflow-api",
+    "port": 8000,
+    "debug": false,
+    "log_level": "info"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "name": "taskflow",
+    "user": "taskflow",
+    "pool_size": 5
+  },
+  "features": {
+    "new_dashboard": false
+  }
+}

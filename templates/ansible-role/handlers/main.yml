@@ -1,0 +1,6 @@
+---
+- name: Restart example service
+  ansible.builtin.service:
+    name: "{{ example_service }}"
+    state: restarted
+  become: true

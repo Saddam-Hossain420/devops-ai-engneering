@@ -1,0 +1,23 @@
+# হাতে তৈরি উদাহরণ — একটি platform team-এর repository (কাল্পনিক org ও team; ইচ্ছাকৃত কয়েকটি ভুল সহ)
+# নিয়ম: শেষ মিলে যাওয়া লাইন জেতে — তাই সাধারণ নিয়ম উপরে, নির্দিষ্ট নিয়ম নিচে।
+
+*                       @acme/platform
+*.md                    @acme/docs
+/app/                   @acme/backend
+/app/payments/          @acme/payments @acme/security
+/infra/                 @acme/platform @acme/sre
+/.github/workflows/     @acme/platform @acme/security
+**/migrations/          @acme/dba
+/docs/*                 @acme/docs
+
+# ভুল ১: পরে একই pattern — আগের লাইন কখনো কার্যকর হয় না
+*.md                    @acme/tech-writers
+
+# ভুল ২: owner ছাড়া — infra/terraform-এর কোনো owner থাকবে না (উপরের /infra/ বাতিল হয়ে যায়)
+/infra/terraform/
+
+# ভুল ৩: অবৈধ owner (@ নেই, email-ও নয়)
+/scripts/               platform-team
+
+# ভুল ৪: GitHub CODEOWNERS-এ negation সমর্থিত নয়
+!/app/payments/README.md

@@ -1,0 +1,31 @@
+# Template: Python web app — multi-stage, non-root
+# Base image version pin করুন; production-এ digest (@sha256:...) ব্যবহার করুন।
+
+# ---- build stage: dependency wheel তৈরি ----
+FROM python:3.12-slim AS build
+WORKDIR /build
+COPY requirements.txt .
+RUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.txt
+
+# ---- runtime stage: শুধু যা চালাতে দরকার ----
+FROM python:3.12-slim
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+WORKDIR /app
+
+# আলাদা unprivileged user (UID নির্দিষ্ট — Kubernetes runAsNonRoot যাচাই করতে পারে)
+RUN groupadd --system --gid 10001 app \
+ && useradd --system --uid 10001 --gid app --no-create-home app
+
+COPY --from=build /wheels /wheels
+RUN pip install --no-cache-dir /wheels/* && rm -rf /wheels
+
+COPY --chown=app:app . .
+USER 10001
+
+EXPOSE 8000
+# Health check-এর জন্য curl দরকার নেই — Python standard library ব্যবহার
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+  CMD python -c "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2).status == 200 else 1)"
+
+CMD ["python", "-m", "app"]

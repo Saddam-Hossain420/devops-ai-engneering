@@ -1,0 +1,22 @@
+[
+  {"ifindex": 1, "ifname": "lo", "flags": ["LOOPBACK", "UP", "LOWER_UP"], "mtu": 65536, "operstate": "UNKNOWN", "link_type": "loopback",
+   "addr_info": [{"family": "inet", "local": "127.0.0.1", "prefixlen": 8}]},
+  {"ifindex": 2, "ifname": "ens3", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "operstate": "UP", "link_type": "ether",
+   "addr_info": [{"family": "inet", "local": "192.168.56.10", "prefixlen": 24}]},
+  {"ifindex": 3, "ifname": "docker0", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "operstate": "UP", "link_type": "ether",
+   "linkinfo": {"info_kind": "bridge"}, "addr_info": [{"family": "inet", "local": "172.17.0.1", "prefixlen": 16}]},
+  {"ifindex": 7, "ifname": "veth3f2a9c1", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "master": "docker0", "operstate": "UP",
+   "link_type": "ether", "link_index": 6, "link_netnsid": 0, "linkinfo": {"info_kind": "veth"}},
+  {"ifindex": 9, "ifname": "veth81bd0e4", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "master": "docker0", "operstate": "UP",
+   "link_type": "ether", "link_index": 8, "link_netnsid": 1, "linkinfo": {"info_kind": "veth"}},
+  {"ifindex": 10, "ifname": "br-lab", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "operstate": "UP", "link_type": "ether",
+   "linkinfo": {"info_kind": "bridge"}, "addr_info": [{"family": "inet", "local": "10.200.0.1", "prefixlen": 24}]},
+  {"ifindex": 12, "ifname": "veth-red", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "master": "br-lab", "operstate": "UP",
+   "link_type": "ether", "link_index": 2, "link_netnsid": 2, "linkinfo": {"info_kind": "veth"}},
+  {"ifindex": 14, "ifname": "veth-blue", "flags": ["BROADCAST", "MULTICAST"], "mtu": 1500, "master": "br-lab", "operstate": "DOWN",
+   "link_type": "ether", "link_index": 2, "link_netnsid": 3, "linkinfo": {"info_kind": "veth"}},
+  {"ifindex": 16, "ifname": "veth-orphan", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "operstate": "UP",
+   "link_type": "ether", "link": "veth-orphan-p", "linkinfo": {"info_kind": "veth"}},
+  {"ifindex": 15, "ifname": "veth-orphan-p", "flags": ["BROADCAST", "MULTICAST", "UP", "LOWER_UP"], "mtu": 1500, "operstate": "UP",
+   "link_type": "ether", "link": "veth-orphan", "linkinfo": {"info_kind": "veth"}}
+]

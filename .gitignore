@@ -1,0 +1,90 @@
+# ---- Secrets (কখনো commit নয়) ----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.kubeconfig
+kubeconfig
+.aws/
+credentials
+*.secret
+secrets.yaml
+secrets.yml
+vault-password*
+.vault_pass*
+
+# ---- Terraform ----
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*.tfvars
+!*.tfvars.example
+.terraformrc
+terraform.rc
+
+# ---- Ansible ----
+*.retry
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# ---- ML / data ----
+mlruns/
+mlartifacts/
+*.ckpt
+*.safetensors
+*.gguf
+*.onnx
+*.pt
+*.pth
+data/raw/
+data/processed/
+.dvc/cache/
+
+# ---- Node ----
+node_modules/
+
+# ---- Logs / temp ----
+*.log
+*.tmp
+tmp/
+.cache/
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+*~
+
+# ---- Packet capture (আসল capture-এ password/token/cookie থাকতে পারে) ----
+*.pcap
+*.pcapng
+!02-computer-networking/code/L02-15/sample.pcap

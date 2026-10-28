@@ -1,0 +1,21 @@
+# হাতে তৈরি নমুনা pyproject.toml — নতুন Python project-এর ন্যূনতম কাঠামো
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "opstools"
+version = "0.1.0"
+description = "Small infrastructure automation tools"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31,<3",
+    "PyYAML>=6.0",
+    "click",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.5"]
+
+[project.scripts]
+opstools = "opstools.cli:main"

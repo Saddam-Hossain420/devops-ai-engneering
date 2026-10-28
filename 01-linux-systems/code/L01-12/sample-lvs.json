@@ -1,0 +1,9 @@
+{
+  "report": [
+    {"lv": [
+      {"lv_name": "ubuntu-lv", "vg_name": "ubuntu-vg", "lv_size": "26843545600"},
+      {"lv_name": "postgres", "vg_name": "data-vg", "lv_size": "16106127360"},
+      {"lv_name": "backups", "vg_name": "data-vg", "lv_size": "4290772992"}
+    ]}
+  ]
+}

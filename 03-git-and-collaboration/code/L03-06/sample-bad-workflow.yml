@@ -1,0 +1,27 @@
+# হাতে তৈরি উদাহরণ — ইচ্ছাকৃতভাবে ভুলে ভরা workflow। কখনো আসল repository-তে ব্যবহার করবেন না।
+# workflow_lint.py দিয়ে ভুলগুলো খুঁজুন।
+name: pr-greeter
+
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+permissions: write-all
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Say hello
+        run: |
+          echo "Thanks for: ${{ github.event.pull_request.title }}"
+          echo "Deploying with ${{ secrets.DEPLOY_TOKEN }}"
+
+      - name: Run the PR's tests (with secrets in scope)
+        run: make test
+
+      - uses: some-org/fancy-comment-action@main

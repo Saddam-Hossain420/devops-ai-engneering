@@ -1,0 +1,12 @@
+# হাতে তৈরি নমুনা — বিভিন্ন ধরনের dependency লেখার রূপ (pin_check.py দিয়ে পরীক্ষা করুন)
+# version-গুলো উদাহরণ মাত্র; নিজের project-এ আসল lock file তৈরি করুন (pip-compile / uv pip compile)
+requests==2.32.3
+urllib3==2.2.3 \
+    --hash=sha256:0000000000000000000000000000000000000000000000000000000000000000
+PyYAML>=6.0
+rich~=13.7
+click
+psycopg[binary]==3.2.3 ; python_version >= "3.10"
+git+https://github.com/example/internal-tool.git@main
+-e ./libs/shared
+-r dev-requirements.txt

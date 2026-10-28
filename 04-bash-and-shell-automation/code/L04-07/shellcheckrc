@@ -1,0 +1,17 @@
+# নমুনা ShellCheck configuration — repository-র root-এ `.shellcheckrc` নামে রাখুন।
+# ShellCheck নিচের ক্রমে খোঁজে: script-এর directory থেকে উপরের দিকে `.shellcheckrc`, তারপর home।
+
+# `source` করা file-ও পড়ে বিশ্লেষণ করবে (-x-এর সমতুল্য); path `# shellcheck source=...` বা নিচের নিয়মে
+external-sources=true
+source-path=SCRIPTDIR
+
+# Default-এ বন্ধ কিছু অতিরিক্ত check — এই module-এর lesson-এর সাথে মিলে যায়।
+# কোনগুলো আপনার version-এ আছে দেখুন: shellcheck --list-optional
+# প্রথমে default check-এ পরিষ্কার করুন, তারপর একটি একটি করে চালু করুন (এগুলো অনেক নতুন finding দিতে পারে;
+# এই repository-তে এখনো ShellCheck চালানো হয়নি — L04-07 দেখুন):
+# enable=check-extra-masked-returns   # L04-01 case ৭: local x=$(...)-এর মতো লুকানো ব্যর্থতা
+# enable=check-set-e-suppressed       # L04-01 case ৬: if/&&-এ ডাকা function-এ set -e বন্ধ
+# enable=require-double-brackets      # Bash script-এ [ ]-এর বদলে [[ ]]
+
+# একটি নির্দিষ্ট সতর্কতা পুরো repository-তে বন্ধ করা (কারণসহ লিখুন!):
+# disable=SC1091    # বাইরের library যা repository-তে নেই

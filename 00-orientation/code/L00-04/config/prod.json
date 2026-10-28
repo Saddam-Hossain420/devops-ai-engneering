@@ -1,0 +1,6 @@
+{
+  "database": {
+    "host": "db.prod.internal",
+    "pool_size": 20
+  }
+}

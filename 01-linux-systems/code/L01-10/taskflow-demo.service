@@ -1,0 +1,36 @@
+# /etc/systemd/system/taskflow-demo.service
+# L01-10 practice unit: runs hello_service.py as an unprivileged, sandboxed service.
+# Install: see the lesson (copy app to /opt/taskflow-demo, create user, daemon-reload).
+
+[Unit]
+Description=TaskFlow demo HTTP service (L01-10)
+Documentation=https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html
+After=network.target
+
+[Service]
+Type=simple
+User=taskflow
+Group=taskflow
+WorkingDirectory=/opt/taskflow-demo
+Environment=GREETING=hello-from-systemd
+ExecStart=/usr/bin/python3 /opt/taskflow-demo/hello_service.py --host 127.0.0.1 --port 8080
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=15
+
+# Resource limits (L01-09)
+MemoryMax=128M
+CPUQuota=50%
+
+# Hardening (L01-04/05, L01-16)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+UMask=0027
+
+[Install]
+WantedBy=multi-user.target

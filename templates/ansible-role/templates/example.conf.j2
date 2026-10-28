@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+server {
+    listen {{ example_listen_port }};
+    location / {
+        return 200 "ok\n";
+    }
+}

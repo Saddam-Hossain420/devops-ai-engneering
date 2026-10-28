@@ -1,0 +1,9 @@
+total 0
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 cgroup -> 'cgroup:[4026531835]'
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 ipc -> 'ipc:[4026531839]'
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 mnt -> 'mnt:[4026531841]'
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 net -> 'net:[4026531840]'
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 pid -> 'pid:[4026531836]'
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 time -> 'time:[4026531834]'
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 user -> 'user:[4026531837]'
+lrwxrwxrwx 1 root root 0 Oct 26 10:00 uts -> 'uts:[4026531838]'

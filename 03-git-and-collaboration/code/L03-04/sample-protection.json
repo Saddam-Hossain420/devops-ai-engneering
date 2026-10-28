@@ -1,0 +1,19 @@
+{
+  "_comment": "হাতে তৈরি নমুনা — GitHub REST API-র branch protection response-এর আকারে (কয়েকটি field বাদ)। নিজের repository-র আসল JSON `gh api` দিয়ে নিয়ে মিলিয়ে দেখুন।",
+  "required_status_checks": {
+    "strict": false,
+    "contexts": ["validate"],
+    "checks": [{"context": "validate", "app_id": null}]
+  },
+  "required_pull_request_reviews": {
+    "dismiss_stale_reviews": false,
+    "require_code_owner_reviews": true,
+    "required_approving_review_count": 1,
+    "require_last_push_approval": false
+  },
+  "enforce_admins": {"enabled": false},
+  "required_linear_history": {"enabled": false},
+  "allow_force_pushes": {"enabled": false},
+  "allow_deletions": {"enabled": false},
+  "required_conversation_resolution": {"enabled": true}
+}

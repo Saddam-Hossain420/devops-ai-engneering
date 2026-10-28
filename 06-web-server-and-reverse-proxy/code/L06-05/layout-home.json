@@ -1,0 +1,14 @@
+{
+  "_comment": "হাতে তৈরি বর্ণনা: app একজন developer-এর home-এ socket বানায় — Ubuntu 21.04+-এ নতুন home directory 0750",
+  "users": {
+    "www-data": {"uid": 33, "groups": [33]},
+    "ana": {"uid": 1000, "groups": [1000]}
+  },
+  "paths": {
+    "/": {"uid": 0, "gid": 0, "mode": "0755", "type": "dir"},
+    "/home": {"uid": 0, "gid": 0, "mode": "0755", "type": "dir"},
+    "/home/ana": {"uid": 1000, "gid": 1000, "mode": "0750", "type": "dir"},
+    "/home/ana/taskflow": {"uid": 1000, "gid": 1000, "mode": "0755", "type": "dir"},
+    "/home/ana/taskflow/taskflow.sock": {"uid": 1000, "gid": 1000, "mode": "0777", "type": "socket"}
+  }
+}

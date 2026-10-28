@@ -1,0 +1,9 @@
+{
+  "database": {
+    "host": "db.staging.internal",
+    "pool_size": 10
+  },
+  "features": {
+    "new_dashboard": true
+  }
+}

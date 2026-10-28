@@ -1,0 +1,8 @@
+{
+  "report": [
+    {"vg": [
+      {"vg_name": "ubuntu-vg", "vg_size": "50410291200", "vg_free": "23566745600"},
+      {"vg_name": "data-vg", "vg_size": "21470642176", "vg_free": "1073741824"}
+    ]}
+  ]
+}

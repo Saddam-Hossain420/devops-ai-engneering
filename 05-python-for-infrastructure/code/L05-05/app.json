@@ -1,0 +1,6 @@
+{
+  "server": {"port": 8000, "workers": 4},
+  "log": {"level": "warn"},
+  "db": {"timeout_s": "5"},
+  "featurs": {"signup": false}
+}

@@ -1,0 +1,8 @@
+1min 0.204s systemd-networkd-wait-online.service
+     3.118s snapd.service
+     2.511s cloud-init.service
+     1.402s dev-mapper-ubuntu\x2d\x2dvg\x2dubuntu\x2d\x2dlv.device
+      812ms apparmor.service
+      640ms systemd-journald.service
+      221ms ssh.service
+       95ms taskflow-demo.service

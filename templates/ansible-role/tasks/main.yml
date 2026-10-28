@@ -1,0 +1,25 @@
+---
+# Template role: একটি package install, config template, service চালু
+# Ubuntu ও Fedora দুটোতেই চলে — ansible.builtin.package OS-এর package manager বেছে নেয়।
+- name: Install package
+  ansible.builtin.package:
+    name: "{{ example_package }}"
+    state: present
+  become: true
+
+- name: Deploy configuration
+  ansible.builtin.template:
+    src: example.conf.j2
+    dest: "{{ example_config_path }}"
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify: Restart example service
+
+- name: Ensure service is enabled and running
+  ansible.builtin.service:
+    name: "{{ example_service }}"
+    state: started
+    enabled: true
+  become: true

@@ -1,0 +1,8 @@
+# হাতে তৈরি নমুনা — Ubuntu 24.04-এর sshd_config-এর কাঠামো (সংক্ষিপ্ত)
+Include /etc/ssh/sshd_config.d/*.conf
+
+PermitRootLogin no
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+X11Forwarding yes
+UsePAM yes

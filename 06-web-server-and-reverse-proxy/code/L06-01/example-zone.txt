@@ -1,0 +1,29 @@
+; হাতে তৈরি নমুনা zone — ইচ্ছাকৃত কয়েকটি ভুল সহ (zone_lint.py দিয়ে খুঁজুন)।
+; example.com IANA-র documentation domain; IP-গুলো RFC 5737/3849 documentation range।
+$ORIGIN example.com.
+$TTL 3600
+@       IN SOA ns1.example.com. hostmaster.example.com. (
+                2026102701 ; serial
+                7200       ; refresh
+                900        ; retry
+                1209600    ; expire
+                300 )      ; negative-caching TTL
+@       IN NS   ns1.example.com.
+@       IN NS   ns2.example.net.
+ns1     IN A    192.0.2.53
+@       IN A    192.0.2.10
+@       IN AAAA 2001:db8::10
+@       IN CNAME lb.example.net.
+www     IN CNAME example.com.
+api     300 IN A 192.0.2.20
+api     60  IN A 192.0.2.21
+api     IN TXT "owner=platform-team"
+api     IN CNAME api-lb.example.net.
+app     IN CNAME app.example.com
+mail    IN CNAME mx-host.example.net.
+@       IN MX   10 mail.example.com.
+@       IN TXT  "v=spf1 include:_spf.example.net -all"
+@       IN TXT  "v=spf1 ip4:192.0.2.0/24 ~all"
+internal IN A   10.0.0.5
+cdn     30 IN CNAME d111111abcdef8.cloudfront.example.net.
+_https._tcp IN SRV 0 5 443 www.example.com.

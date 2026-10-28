@@ -1,0 +1,12 @@
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+udev /dev devtmpfs rw,nosuid,relatime,size=1967388k,nr_inodes=491847,mode=755 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,noexec,relatime,size=400880k,mode=755 0 0
+/dev/mapper/ubuntu--vg-ubuntu--lv / ext4 rw,relatime 0 0
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime 0 0
+/dev/sda2 /boot ext4 rw,relatime 0 0
+/dev/sda1 /boot/efi vfat rw,relatime,fmask=0077,dmask=0077 0 0
+/dev/loop0 /snap/core22/1621 squashfs ro,nodev,relatime 0 0
+tmpfs /run/user/1000 tmpfs rw,nosuid,nodev,relatime,size=400876k,mode=700,uid=1000,gid=1000 0 0
+/dev/sdb1 /mnt/backup\040disk ext4 ro,relatime 0 0
