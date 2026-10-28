@@ -1,0 +1,2 @@
+{"vpc": "10.0.0.0/16", "azs": ["a", "b"], "avoid": {"office-vpn": "10.0.0.0/20"},
+ "tiers": [{"name": "app", "type": "private", "hosts": 100}]}

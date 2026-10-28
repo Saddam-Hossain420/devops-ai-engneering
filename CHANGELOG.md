@@ -8,6 +8,33 @@ Format: `YYYY-MM-DD — পরিবর্তনের ধরন — বিব�
 
 ---
 
+## 2026-10-28
+
+### Added
+
+- **Module 08 labs** — `labs/08-aws-core-services/` A (S3 bucket ও IAM policy; `check_a.py`), B (TaskFlow: VPC + EC2 + ALB; `check_b.py` চারটি module tool দিয়ে ২৪টি check), C (`Target.Timeout` incident, সম্পূর্ণ offline; `check_c.py` ন্যূনতম fix ও diagnosis যাচাই)। Checker reference solution ও ইচ্ছাকৃত ভুল input দিয়ে যাচাই; A/B আসল AWS-এ চালানো হয়নি।
+- **Module 08 quiz** — `assessments/08-aws-core-services/quiz.md` (৩৫ প্রশ্ন, answer key; Part B tool দিয়ে যাচাই)।
+- **Lesson L08-01 – L08-12** — AWS account safety, CLI/STS/boto3, IAM role ও trust, VPC, SG/NACL, EC2 (TaskFlow user data), EBS/EFS, S3 (SigV4 presign), ALB, Route 53, CloudWatch, tagging/Cost Explorer/cleanup; মোট ২২টি tool ও ৭২টি test। সব input হাতে তৈরি describe-output; কোনো AWS call নেই।
+- **GLOSSARY** — Module 08-এর AWS term।
+
+- **Module 07 labs** — `labs/07-cloud-fundamentals/` A (local VM; `check_a.py` — host/guest `virt_probe.py`, overcommit, steal, snapshot), B (on-prem বনাম cloud; `check_b.py` availability ও খরচ নিজে আবার হিসাব করে মেলায়), C (CI deploy role-এর ভুল IAM policy; `check_c.py` — ৬টি required ও ১৩টি dangerous request, lint)। Checker reference solution দিয়ে যাচাই (solution repo-তে নেই); Lab A-র guest দিক simulate, আসল VM-এ চালানো হয়নি।
+- **Module 07 quiz** — `assessments/07-cloud-fundamentals/quiz.md` (৩৫ প্রশ্ন, answer key; Part B tool দিয়ে যাচাই)।
+- **Lesson L07-06** — cost model, budget, tagging, cleanup; `cost_estimate.py` (`example-prices.json` — **বানানো দাম**, প্রতিটি output-এ সতর্কতা), `tag_audit.py` (read-only), ৬টি test।
+- **Lesson L07-05** — IAM ও least privilege; `policy_eval.py` (সরল evaluation logic), `policy_lint.py`, নমুনা policy ও request, ৮টি test।
+- **Lesson L07-04** — public বনাম private networking; `subnet_plan.py`, তিনটি নমুনা VPC, ৪টি test।
+- **Lesson L07-03** — region, AZ, fault domain; `availability.py` (analytic, Monte Carlo, naive তুলনা, SPOF), তিনটি নমুনা, ৬টি test।
+- **Lesson L07-02** — IaaS/PaaS/FaaS/SaaS ও shared responsibility; `responsibility.py`, `sample-incidents.json`, ৫টি test।
+- **Lesson L07-01** — virtualization ও hypervisor; `virt_probe.py` (Linux/Windows, overcommit, steal), ৭টি test।
+- **GLOSSARY** — Module 07-এর cloud term।
+
+### Fixed
+
+- **L08 (লেখার সময় test-এ ধরা):** `cleanup_plan.py`-এ security group-এর পারস্পরিক reference revoke-এর ক্রম ও আগেই-মুছে-যাওয়া root volume-এ `set -e`-এর কারণে অর্ধেক cleanup; `r53_plan.py`-এর একমুখী CNAME-conflict check ও DELETE-ক্রম; `alarm_sim.py`-এ প্রমাণ ছাড়া state বদল; L08-05-এর test-এ Python 3.13-only `copy.replace`; L08-04-এ py3.11-এ অচল nested f-string।
+- **L05-13 `taskflow_api.py`:** 413-এর পরে body না পড়ে connection বন্ধ করায় kernel RST পাঠাত, client মাঝে মাঝে উত্তরটাই হারাত (Windows-এ ৩০ বারে ~৮)। এখন সীমিত lingering drain (`MAX_DRAIN` ১ MiB, ১ s); ৩০-বারের regression test (fix ছাড়া FAIL যাচাই করা); lesson হালনাগাদ। Module 07-এর পূর্ণ validation-এ flaky test থেকে ধরা পড়েছে।
+- **L07-05 `policy_lint.py`:** `Allow` + `NotAction` on `*` শুধু WARN পাচ্ছিল, অথচ iam/sts/kms/organizations বাদ না দিলে সেটা কার্যত admin — এখন CRITICAL, regression test সহ।
+
+---
+
 ## 2026-10-27
 
 ### Added

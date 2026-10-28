@@ -1,0 +1,4 @@
+{"name": "TaskFlow v0.1 — one VM (nginx + app + SQLite) in one AZ",
+ "_note": "illustrative availabilities, not a provider SLA",
+ "az_availability": 0.999,
+ "tiers": [{"name": "vm", "availability": 0.995, "azs": ["a"]}]}

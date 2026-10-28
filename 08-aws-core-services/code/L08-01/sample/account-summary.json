@@ -1,0 +1,9 @@
+{
+  "_note": "হাতে তৈরি — `aws iam get-account-summary`-এর রূপে (শুধু প্রাসঙ্গিক key), একটি নতুন ও অসুরক্ষিত account",
+  "SummaryMap": {
+    "AccountMFAEnabled": 0,
+    "AccountAccessKeysPresent": 1,
+    "Users": 2,
+    "MFADevicesInUse": 0
+  }
+}

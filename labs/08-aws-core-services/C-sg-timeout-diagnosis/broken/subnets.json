@@ -1,0 +1,33 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "Subnets": [
+  {
+   "SubnetId": "subnet-pub-a",
+   "VpcId": "vpc-1",
+   "CidrBlock": "10.20.2.0/26",
+   "AvailabilityZone": "ap-south-1a",
+   "MapPublicIpOnLaunch": false
+  },
+  {
+   "SubnetId": "subnet-pub-b",
+   "VpcId": "vpc-1",
+   "CidrBlock": "10.20.2.64/26",
+   "AvailabilityZone": "ap-south-1b",
+   "MapPublicIpOnLaunch": false
+  },
+  {
+   "SubnetId": "subnet-app-a",
+   "VpcId": "vpc-1",
+   "CidrBlock": "10.20.0.0/24",
+   "AvailabilityZone": "ap-south-1a",
+   "MapPublicIpOnLaunch": false
+  },
+  {
+   "SubnetId": "subnet-app-b",
+   "VpcId": "vpc-1",
+   "CidrBlock": "10.20.1.0/24",
+   "AvailabilityZone": "ap-south-1b",
+   "MapPublicIpOnLaunch": false
+  }
+ ]
+}

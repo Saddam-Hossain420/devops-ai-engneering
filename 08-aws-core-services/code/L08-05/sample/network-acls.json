@@ -1,0 +1,21 @@
+{
+  "_note": "হাতে তৈরি — `aws ec2 describe-network-acls`-এর রূপে; acl-default সব allow (AWS-এর default NACL-এর মতো), acl-app কাস্টম",
+  "NetworkAcls": [
+    {"NetworkAclId": "acl-default", "VpcId": "vpc-0lab", "IsDefault": true,
+     "Associations": [{"SubnetId": "subnet-pub-a"}, {"SubnetId": "subnet-pub-b"}, {"SubnetId": "subnet-data-a"}],
+     "Entries": [
+       {"RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": false, "CidrBlock": "0.0.0.0/0"},
+       {"RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0"},
+       {"RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0"},
+       {"RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": true, "CidrBlock": "0.0.0.0/0"}]},
+    {"NetworkAclId": "acl-app", "VpcId": "vpc-0lab", "IsDefault": false,
+     "Associations": [{"SubnetId": "subnet-app-a"}, {"SubnetId": "subnet-app-b"}],
+     "Entries": [
+       {"RuleNumber": 90, "Protocol": "6", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0", "PortRange": {"From": 22, "To": 22}},
+       {"RuleNumber": 100, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "10.20.0.0/16", "PortRange": {"From": 8000, "To": 8000}},
+       {"RuleNumber": 110, "Protocol": "6", "RuleAction": "allow", "Egress": false, "CidrBlock": "0.0.0.0/0", "PortRange": {"From": 1024, "To": 65535}},
+       {"RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": false, "CidrBlock": "0.0.0.0/0"},
+       {"RuleNumber": 100, "Protocol": "-1", "RuleAction": "allow", "Egress": true, "CidrBlock": "0.0.0.0/0"},
+       {"RuleNumber": 32767, "Protocol": "-1", "RuleAction": "deny", "Egress": true, "CidrBlock": "0.0.0.0/0"}]}
+  ]
+}

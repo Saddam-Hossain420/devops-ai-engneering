@@ -1,0 +1,11 @@
+{
+  "_note": "হাতে তৈরি — `aws ec2 describe-subnets --filters Name=vpc-id,Values=vpc-0lab`-এর রূপে; L07-04-এর taskflow-vpc পরিকল্পনা থেকে দুই AZ",
+  "Subnets": [
+    {"SubnetId": "subnet-pub-a", "VpcId": "vpc-0lab", "CidrBlock": "10.20.0.0/24", "AvailabilityZone": "ap-south-1a", "MapPublicIpOnLaunch": true, "Tags": [{"Key": "Name", "Value": "public-a"}]},
+    {"SubnetId": "subnet-pub-b", "VpcId": "vpc-0lab", "CidrBlock": "10.20.1.0/24", "AvailabilityZone": "ap-south-1b", "MapPublicIpOnLaunch": true, "Tags": [{"Key": "Name", "Value": "public-b"}]},
+    {"SubnetId": "subnet-app-a", "VpcId": "vpc-0lab", "CidrBlock": "10.20.16.0/20", "AvailabilityZone": "ap-south-1a", "MapPublicIpOnLaunch": false, "Tags": [{"Key": "Name", "Value": "app-a"}]},
+    {"SubnetId": "subnet-app-b", "VpcId": "vpc-0lab", "CidrBlock": "10.20.32.0/20", "AvailabilityZone": "ap-south-1b", "MapPublicIpOnLaunch": true, "Tags": [{"Key": "Name", "Value": "app-b"}]},
+    {"SubnetId": "subnet-data-a", "VpcId": "vpc-0lab", "CidrBlock": "10.20.48.0/24", "AvailabilityZone": "ap-south-1a", "MapPublicIpOnLaunch": false, "Tags": [{"Key": "Name", "Value": "data-a"}]},
+    {"SubnetId": "subnet-legacy", "VpcId": "vpc-0lab", "CidrBlock": "10.20.200.0/24", "AvailabilityZone": "ap-south-1b", "MapPublicIpOnLaunch": false, "Tags": [{"Key": "Name", "Value": "legacy"}]}
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {"name": "internet → ALB 443", "src_ip": "198.51.100.7", "dst_ip": "10.20.0.10", "dst_sgs": ["sg-alb"], "dst_subnet": "subnet-pub-a", "port": 443, "expect": "allow"},
+  {"name": "ALB → app 8000", "src_ip": "10.20.0.10", "src_sgs": ["sg-alb"], "src_subnet": "subnet-pub-a", "dst_ip": "10.20.16.5", "dst_sgs": ["sg-app"], "dst_subnet": "subnet-app-a", "port": 8000, "expect": "allow"},
+  {"name": "internet → app 8000 (bypass ALB)", "src_ip": "198.51.100.7", "dst_ip": "10.20.16.5", "dst_sgs": ["sg-app"], "dst_subnet": "subnet-app-a", "port": 8000, "expect": "deny"},
+  {"name": "internet → app SSH", "src_ip": "198.51.100.7", "dst_ip": "10.20.16.5", "dst_sgs": ["sg-app"], "dst_subnet": "subnet-app-a", "port": 22, "expect": "deny"},
+  {"name": "app → db 5432", "src_ip": "10.20.16.5", "src_sgs": ["sg-app"], "src_subnet": "subnet-app-a", "dst_ip": "10.20.48.9", "dst_sgs": ["sg-db"], "dst_subnet": "subnet-data-a", "port": 5432, "expect": "allow"},
+  {"name": "ALB → db 5432", "src_ip": "10.20.0.10", "src_sgs": ["sg-alb"], "src_subnet": "subnet-pub-a", "dst_ip": "10.20.48.9", "dst_sgs": ["sg-db"], "dst_subnet": "subnet-data-a", "port": 5432, "expect": "deny"}
+]

@@ -1,0 +1,21 @@
+{
+  "_note": "হাতে তৈরি — `aws ec2 describe-security-groups --filters Name=vpc-id,Values=vpc-0lab`-এর রূপে; sg-app-এ ইচ্ছাকৃত ভুল (SSH সবার জন্য)",
+  "SecurityGroups": [
+    {"GroupId": "sg-alb", "GroupName": "taskflow-alb", "VpcId": "vpc-0lab",
+     "IpPermissions": [
+       {"IpProtocol": "tcp", "FromPort": 443, "ToPort": 443, "IpRanges": [{"CidrIp": "0.0.0.0/0"}], "Ipv6Ranges": [{"CidrIpv6": "::/0"}], "UserIdGroupPairs": []},
+       {"IpProtocol": "tcp", "FromPort": 80, "ToPort": 80, "IpRanges": [{"CidrIp": "0.0.0.0/0"}], "Ipv6Ranges": [], "UserIdGroupPairs": []}],
+     "IpPermissionsEgress": [
+       {"IpProtocol": "tcp", "FromPort": 8000, "ToPort": 8000, "IpRanges": [], "UserIdGroupPairs": [{"GroupId": "sg-app"}]}]},
+    {"GroupId": "sg-app", "GroupName": "taskflow-app", "VpcId": "vpc-0lab",
+     "IpPermissions": [
+       {"IpProtocol": "tcp", "FromPort": 8000, "ToPort": 8000, "IpRanges": [], "UserIdGroupPairs": [{"GroupId": "sg-alb"}]},
+       {"IpProtocol": "tcp", "FromPort": 22, "ToPort": 22, "IpRanges": [{"CidrIp": "0.0.0.0/0", "Description": "temporary debug"}], "UserIdGroupPairs": []}],
+     "IpPermissionsEgress": [
+       {"IpProtocol": "-1", "IpRanges": [{"CidrIp": "0.0.0.0/0"}], "UserIdGroupPairs": []}]},
+    {"GroupId": "sg-db", "GroupName": "taskflow-db", "VpcId": "vpc-0lab",
+     "IpPermissions": [
+       {"IpProtocol": "tcp", "FromPort": 5432, "ToPort": 5432, "IpRanges": [], "UserIdGroupPairs": [{"GroupId": "sg-app"}, {"GroupId": "sg-old-bastion"}]}],
+     "IpPermissionsEgress": []}
+  ]
+}

@@ -7,7 +7,7 @@
 | **আনুমানিক সময়** | ৪ ঘণ্টা |
 | **পূর্বশর্ত** | এই module-এর L05-01 থেকে L05-12, [L01-10 — systemd service](../01-linux-systems/L01-10-systemd-services.md), [L00-05 — Diagram ও ADR](../00-orientation/L00-05-diagrams-and-docs.md) |
 | **Label** | — |
-| **Tested** | `taskflow_api.py` (TaskFlow API v0.1): ১০টি integration test পাস (Python 3.14.5, Windows)। আসলে চালানো হয়েছে: process হিসেবে চালু করে `curl` দিয়ে ১৮টি request (CRUD ও ১০ ধরনের ভুল input); localhost-এ throughput মাপা হয়েছে। `ruff`-এর security নিয়ম (`S`) ৫টি finding দিয়েছিল, সব ঠিক করা হয়েছে (Section 9.4)। **SIGTERM-এ graceful shutdown-এর test শুধু POSIX-এ চলে — এখানে (Windows) চালানো হয়নি।** Ubuntu-তে systemd unit হিসেবে **চালানো হয়নি**। |
+| **Tested** | `taskflow_api.py` (TaskFlow API v0.1): ১১টি integration test পাস (Python 3.14.5, Windows)। আসলে চালানো হয়েছে: process হিসেবে চালু করে `curl` দিয়ে ১৮টি request (CRUD ও ১০ ধরনের ভুল input); localhost-এ throughput মাপা হয়েছে। `ruff`-এর security নিয়ম (`S`) ৫টি finding দিয়েছিল, সব ঠিক করা হয়েছে (Section 9.4)। **SIGTERM-এ graceful shutdown-এর test শুধু POSIX-এ চলে — এখানে (Windows) চালানো হয়নি।** Ubuntu-তে systemd unit হিসেবে **চালানো হয়নি**। |
 
 ---
 
@@ -279,6 +279,12 @@ Smoke test থেকে আরও দুটি:
 - **`Server: taskflow `** — শেষে space, কারণ `version_string()` `server_version + " " + sys_version` জোড়ে। এখন `version_string()` override করা হয়েছে। Default মান (`BaseHTTP/0.6 Python/3.14.5`) আক্রমণকারীকে exact version জানিয়ে দিত।
 - **405-এ `Allow` header নেই** — HTTP spec (RFC 9110) অনুযায়ী থাকা উচিত। যোগ করা হয়েছে।
 
+পরে (Module 07-এর পূর্ণ validation-এ) একটি flaky test থেকে আরেকটি:
+
+- **413-এর উত্তর মাঝে মাঝে হারিয়ে যেত।** Server বড় body না পড়েই connection বন্ধ করত। না-পড়া data থাকা অবস্থায় socket বন্ধ করলে kernel RST পাঠায় (Linux-ও), আর client 413 পড়ার আগেই `ConnectionAbortedError`/`ConnectionResetError` পায় — এখানে ৩০ বারে ~৮ বার।
+  - সমাধান nginx-এর *lingering close*-এর মতো: `_drain()` বড়জোর `MAX_DRAIN` (১ MiB) বা ১ সেকেন্ড পর্যন্ত body পড়ে ফেলে দেয়, তারপর বন্ধ করে।
+  - Regression test একই request ৩০ বার পাঠায়; `_drain` নিষ্ক্রিয় করলে test FAIL করে (যাচাই করা)।
+
 ### 9.5 Baseline throughput — আসল পরিমাপ (এই Windows laptop, localhost)
 
 ```text
@@ -328,13 +334,14 @@ sudo systemctl stop taskflow                     # log-এ "shutdown requested" 
 python3 -m unittest -v
 ```
 
-১০টি integration test:
+১১টি integration test:
 
 - পূর্ণ CRUD জীবনচক্র (trim, `Location`, PATCH-এ অন্য field অপরিবর্তিত, DELETE দুবার)।
 - Filter ও pagination।
 - Header (`X-Request-ID` ফেরত, `Server: taskflow`, অদ্ভুত id বদলে নতুন)।
 - ১০ রকম validation error।
 - 415/400/413/405 + `Allow`।
+- বড় body-র 413 উত্তর ৩০ বারেও হারায় না (lingering close)।
 - SQL injection-এর চেষ্টা আক্ষরিক data হিসেবে থাকে।
 - ৪০টি সমান্তরাল POST-এ অনন্য id।
 - Restart-এর পরে data থাকে।
@@ -352,7 +359,7 @@ python3 -m unittest -v
 | `?1 IS NULL OR done = ?1`, `COALESCE` | স্থির SQL | Dynamic SQL নেই |
 | `REQUEST_ID` regex | বাইরের id যাচাই | Log injection, অসীম দৈর্ঘ্য নয় |
 | `_json_body` ক্রম | সস্তা যাচাই আগে | বড় body পড়াই হয় না |
-| `close_connection = True` (413) | বাকি body উপেক্ষা | Keep-alive-এ পরের request নষ্ট হয় না |
+| `close_connection = True` + `_drain()` (413) | সীমিত পরিমাণ body পড়ে ফেলে তারপর বন্ধ | Keep-alive-এ পরের request নষ্ট হয় না; RST-এ client উত্তর হারায় না |
 | `except Exception` → 500, log-এ traceback | Client-এ ভেতরের বিবরণ নয় | তথ্য ফাঁস নয়; request id দিয়ে খোঁজা |
 | `version_string()` override | `Server: taskflow` | Version ফাঁস নয় |
 | `shutdown()` আলাদা thread-এ | Signal handler-এ deadlock নয় | Section 8.3 |

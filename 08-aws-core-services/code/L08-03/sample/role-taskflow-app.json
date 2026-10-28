@@ -1,0 +1,12 @@
+{
+  "_note": "হাতে তৈরি — `aws iam get-role --role-name taskflow-app`-এর রূপে (account কাল্পনিক)",
+  "Role": {
+    "RoleName": "taskflow-app",
+    "Arn": "arn:aws:iam::111122223333:role/taskflow-app",
+    "MaxSessionDuration": 3600,
+    "AssumeRolePolicyDocument": {
+      "Version": "2012-10-17",
+      "Statement": [{"Effect": "Allow", "Principal": {"Service": "ec2.amazonaws.com"}, "Action": "sts:AssumeRole"}]
+    }
+  }
+}

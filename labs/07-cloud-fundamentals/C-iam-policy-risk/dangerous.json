@@ -1,0 +1,15 @@
+[
+  {"why": "deletes a release (rollback impossible)", "action": "s3:DeleteObject", "resource": "arn:aws:s3:::taskflow-artifacts/releases/v1.4.1/app.tar.gz"},
+  {"why": "makes the artifact bucket public", "action": "s3:PutBucketPolicy", "resource": "arn:aws:s3:::taskflow-artifacts"},
+  {"why": "reads database backups", "action": "s3:GetObject", "resource": "arn:aws:s3:::taskflow-backups/db/2026-10-27.dump"},
+  {"why": "lists every prefix of the artifact bucket", "action": "s3:ListBucket", "resource": "arn:aws:s3:::taskflow-artifacts", "context": {"s3:prefix": ""}},
+  {"why": "reads the production DB password", "action": "ssm:GetParameter", "resource": "arn:aws:ssm:ap-south-1:111122223333:parameter/taskflow/prod/db-password"},
+  {"why": "passes an admin role to an instance it launches (escalation)", "action": "iam:PassRole", "resource": "arn:aws:iam::111122223333:role/OrganizationAdmin", "context": {"iam:PassedToService": "ec2.amazonaws.com"}},
+  {"why": "passes the app role to a service other than EC2", "action": "iam:PassRole", "resource": "arn:aws:iam::111122223333:role/taskflow-app-role", "context": {"iam:PassedToService": "lambda.amazonaws.com"}},
+  {"why": "becomes another role directly", "action": "sts:AssumeRole", "resource": "arn:aws:iam::111122223333:role/OrganizationAdmin"},
+  {"why": "launches (crypto-mining) instances", "action": "ec2:RunInstances", "resource": "*"},
+  {"why": "terminates production instances", "action": "ec2:TerminateInstances", "resource": "*"},
+  {"why": "decrypts with any key", "action": "kms:Decrypt", "resource": "*"},
+  {"why": "turns off the audit trail", "action": "cloudtrail:StopLogging", "resource": "*"},
+  {"why": "creates an access key for a user", "action": "iam:CreateAccessKey", "resource": "arn:aws:iam::111122223333:user/alice"}
+]

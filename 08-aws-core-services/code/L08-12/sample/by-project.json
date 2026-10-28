@@ -1,0 +1,75 @@
+{
+ "_note": "হাতে তৈরি — `aws ce get-cost-and-usage`-এর রূপে; সংখ্যাগুলো বানানো, কোনো আসল বিল বা দাম নয়",
+ "GroupDefinitions": [
+  {
+   "Type": "TAG",
+   "Key": "Project"
+  }
+ ],
+ "ResultsByTime": [
+  {
+   "TimePeriod": {
+    "Start": "2026-09-01",
+    "End": "2026-10-01"
+   },
+   "Total": {},
+   "Estimated": false,
+   "Groups": [
+    {
+     "Keys": [
+      "Project$lab08"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "5.1000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "Project$"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "0.5500",
+       "Unit": "USD"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "TimePeriod": {
+    "Start": "2026-10-01",
+    "End": "2026-11-01"
+   },
+   "Total": {},
+   "Estimated": true,
+   "Groups": [
+    {
+     "Keys": [
+      "Project$lab08"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "13.4000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "Project$"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "8.3700",
+       "Unit": "USD"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

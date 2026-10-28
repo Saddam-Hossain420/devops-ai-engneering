@@ -1,0 +1,6 @@
+{
+  "Rules": [
+    {"ID": "abort-multipart", "Status": "Enabled", "Filter": {}, "AbortIncompleteMultipartUpload": {"DaysAfterInitiation": 7}},
+    {"ID": "expire-old-versions", "Status": "Enabled", "Filter": {}, "NoncurrentVersionExpiration": {"NoncurrentDays": 30}}
+  ]
+}

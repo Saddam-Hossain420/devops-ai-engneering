@@ -1,0 +1,21 @@
+[
+  {"id": "i-prod-app-1", "type": "instance", "state": "running",
+   "tags": {"owner": "platform", "env": "prod", "cost-center": "taskflow"}},
+  {"id": "i-prod-app-2", "type": "instance", "state": "running",
+   "tags": {"owner": "platform", "env": "prod", "cost-center": "taskflow"}},
+  {"id": "i-demo-ana", "type": "instance", "state": "running",
+   "tags": {"owner": "ana", "env": "dev", "cost-center": "taskflow", "expires": "2026-09-30"}},
+  {"id": "i-loadtest-7", "type": "instance", "state": "stopped",
+   "tags": {"owner": "rahim", "env": "test", "cost-center": "taskflow", "expires": "2026-12-31"}},
+  {"id": "i-mystery", "type": "instance", "state": "running", "tags": {"Name": "test-do-not-delete"}},
+  {"id": "vol-prod-app-1", "type": "volume", "attached_to": "i-prod-app-1", "size_gb": 20,
+   "tags": {"owner": "platform", "env": "prod", "cost-center": "taskflow"}},
+  {"id": "vol-loadtest-7", "type": "volume", "attached_to": "i-loadtest-7", "size_gb": 500,
+   "tags": {"owner": "rahim", "env": "test", "cost-center": "taskflow"}},
+  {"id": "vol-orphan-2025", "type": "volume", "size_gb": 200, "tags": {"env": "dev"}},
+  {"id": "eip-old-demo", "type": "public-ip", "tags": {"owner": "ana", "env": "dev", "cost-center": "taskflow"}},
+  {"id": "snap-db-2026-10-27", "type": "snapshot", "created": "2026-10-27", "size_gb": 100,
+   "tags": {"owner": "platform", "env": "prod", "cost-center": "taskflow"}},
+  {"id": "snap-before-migration", "type": "snapshot", "created": "2025-11-02", "size_gb": 300,
+   "tags": {"owner": "platform", "env": "prod", "cost-center": "taskflow", "expires": "next-month"}}
+]

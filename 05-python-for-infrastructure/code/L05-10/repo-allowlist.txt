@@ -7,3 +7,4 @@ f1dca4258056c55e  # L05-07 demo_job.py: নকল DSN password "s3cr3t-demo" —
 41926e413df153b2  # L05-07 test_l05_07.py: redaction test-এর নকল মান
 8ec0b50808639c6a  # L05-07 test_l05_07.py: traceback redaction test-এর নকল মান
 02476cb242349320  # L05-07 lesson Section 5: ঘটনার বর্ণনায় নকল password
+d68db0b280291a8a  # L08-08 lesson Section 9.1: AWS S3 documentation-এর SigV4 উদাহরণের প্রকাশিত নকল key (documentation-এর "…EXAMPLE" key)

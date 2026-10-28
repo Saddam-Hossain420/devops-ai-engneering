@@ -1,0 +1,6 @@
+{"name": "Multi-AZ: LB nodes, app and database replica in two AZs",
+ "_note": "illustrative availabilities, not a provider SLA",
+ "az_availability": 0.999,
+ "tiers": [{"name": "lb", "availability": 0.9999, "azs": ["a", "b"]},
+           {"name": "app", "availability": 0.995, "azs": ["a", "a", "b", "b"], "min_healthy": 1},
+           {"name": "db", "availability": 0.999, "azs": ["a", "b"]}]}

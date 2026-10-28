@@ -1,0 +1,10 @@
+{
+  "_note": "হাতে তৈরি — `aws elbv2 describe-target-health`-এর রূপে; তিনটি সাধারণ অবস্থা",
+  "TargetHealthDescriptions": [
+    {"Target": {"Id": "i-app-a", "Port": 8000}, "HealthCheckPort": "8000", "TargetHealth": {"State": "healthy"}},
+    {"Target": {"Id": "i-app-b", "Port": 8000}, "HealthCheckPort": "8000",
+     "TargetHealth": {"State": "unhealthy", "Reason": "Target.Timeout", "Description": "Request timed out"}},
+    {"Target": {"Id": "i-app-c", "Port": 8000}, "HealthCheckPort": "8000",
+     "TargetHealth": {"State": "unhealthy", "Reason": "Target.ResponseCodeMismatch", "Description": "Health checks failed with these codes: [404]"}}
+  ]
+}

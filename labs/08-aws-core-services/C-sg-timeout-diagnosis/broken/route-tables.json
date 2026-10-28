@@ -1,0 +1,81 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "RouteTables": [
+  {
+   "RouteTableId": "rtb-main",
+   "VpcId": "vpc-1",
+   "Associations": [
+    {
+     "Main": true
+    }
+   ],
+   "Routes": [
+    {
+     "DestinationCidrBlock": "10.20.0.0/16",
+     "GatewayId": "local",
+     "State": "active"
+    }
+   ]
+  },
+  {
+   "RouteTableId": "rtb-pub",
+   "VpcId": "vpc-1",
+   "Associations": [
+    {
+     "Main": false,
+     "SubnetId": "subnet-pub-a"
+    },
+    {
+     "Main": false,
+     "SubnetId": "subnet-pub-b"
+    }
+   ],
+   "Routes": [
+    {
+     "DestinationCidrBlock": "10.20.0.0/16",
+     "GatewayId": "local",
+     "State": "active"
+    },
+    {
+     "DestinationCidrBlock": "0.0.0.0/0",
+     "GatewayId": "igw-1",
+     "State": "active"
+    }
+   ]
+  },
+  {
+   "RouteTableId": "rtb-app-a",
+   "VpcId": "vpc-1",
+   "Associations": [
+    {
+     "Main": false,
+     "SubnetId": "subnet-app-a"
+    }
+   ],
+   "Routes": [
+    {
+     "DestinationCidrBlock": "10.20.0.0/16",
+     "GatewayId": "local",
+     "State": "active"
+    }
+   ]
+  },
+  {
+   "RouteTableId": "rtb-app-b",
+   "VpcId": "vpc-1",
+   "Associations": [
+    {
+     "Main": false,
+     "SubnetId": "subnet-app-b"
+    }
+   ],
+   "Routes": [
+    {
+     "DestinationCidrBlock": "10.20.0.0/16",
+     "GatewayId": "local",
+     "State": "active"
+    }
+   ]
+  }
+ ]
+}

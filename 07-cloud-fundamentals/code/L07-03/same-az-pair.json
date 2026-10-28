@@ -1,0 +1,6 @@
+{"name": "Two app VMs behind a load balancer — but both in AZ a",
+ "_note": "illustrative availabilities, not a provider SLA",
+ "az_availability": 0.999,
+ "tiers": [{"name": "lb", "availability": 0.9999, "azs": ["a"]},
+           {"name": "app", "availability": 0.995, "azs": ["a", "a"]},
+           {"name": "db", "availability": 0.999, "azs": ["a"]}]}

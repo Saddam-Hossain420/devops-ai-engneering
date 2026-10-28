@@ -1,0 +1,8 @@
+[
+  {"why": "build artifact upload", "action": "s3:PutObject", "resource": "arn:aws:s3:::taskflow-artifacts/releases/v1.4.2/app.tar.gz"},
+  {"why": "deploy step downloads the artifact", "action": "s3:GetObject", "resource": "arn:aws:s3:::taskflow-artifacts/releases/v1.4.2/app.tar.gz"},
+  {"why": "list releases (only under releases/)", "action": "s3:ListBucket", "resource": "arn:aws:s3:::taskflow-artifacts", "context": {"s3:prefix": "releases/"}},
+  {"why": "read CI config", "action": "ssm:GetParameter", "resource": "arn:aws:ssm:ap-south-1:111122223333:parameter/taskflow/ci/deploy-target"},
+  {"why": "attach the app role to new instances", "action": "iam:PassRole", "resource": "arn:aws:iam::111122223333:role/taskflow-app-role", "context": {"iam:PassedToService": "ec2.amazonaws.com"}},
+  {"why": "find the instances to deploy to (read-only)", "action": "ec2:DescribeInstances", "resource": "*"}
+]

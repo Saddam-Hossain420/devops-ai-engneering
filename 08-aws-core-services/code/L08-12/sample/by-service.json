@@ -1,0 +1,141 @@
+{
+ "_note": "হাতে তৈরি — `aws ce get-cost-and-usage`-এর রূপে; সংখ্যাগুলো বানানো, কোনো আসল বিল বা দাম নয়",
+ "GroupDefinitions": [
+  {
+   "Type": "DIMENSION",
+   "Key": "SERVICE"
+  }
+ ],
+ "ResultsByTime": [
+  {
+   "TimePeriod": {
+    "Start": "2026-09-01",
+    "End": "2026-10-01"
+   },
+   "Total": {},
+   "Estimated": false,
+   "Groups": [
+    {
+     "Keys": [
+      "Amazon Elastic Compute Cloud - Compute"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "4.1000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "EC2 - Other"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "1.2000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "Amazon Simple Storage Service"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "0.0500",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "AmazonCloudWatch"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "0.3000",
+       "Unit": "USD"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "TimePeriod": {
+    "Start": "2026-10-01",
+    "End": "2026-11-01"
+   },
+   "Total": {},
+   "Estimated": true,
+   "Groups": [
+    {
+     "Keys": [
+      "Amazon Elastic Compute Cloud - Compute"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "5.0000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "EC2 - Other"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "9.8000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "Amazon Virtual Private Cloud"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "3.4000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "Elastic Load Balancing"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "2.6000",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "Amazon Simple Storage Service"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "0.0700",
+       "Unit": "USD"
+      }
+     }
+    },
+    {
+     "Keys": [
+      "AmazonCloudWatch"
+     ],
+     "Metrics": {
+      "UnblendedCost": {
+       "Amount": "0.9000",
+       "Unit": "USD"
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

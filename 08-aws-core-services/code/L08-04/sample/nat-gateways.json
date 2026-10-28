@@ -1,0 +1,7 @@
+{
+  "_note": "হাতে তৈরি — `aws ec2 describe-nat-gateways`-এর রূপে",
+  "NatGateways": [
+    {"NatGatewayId": "nat-a", "VpcId": "vpc-0lab", "SubnetId": "subnet-pub-a", "State": "available", "ConnectivityType": "public"},
+    {"NatGatewayId": "nat-old", "VpcId": "vpc-0lab", "SubnetId": "subnet-legacy", "State": "deleted", "ConnectivityType": "public"}
+  ]
+}

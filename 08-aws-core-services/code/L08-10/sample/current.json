@@ -1,0 +1,11 @@
+{
+  "_note": "হাতে তৈরি — `aws route53 list-resource-record-sets`-এর রূপে; zone example.com (documentation domain, RFC 2606)",
+  "ResourceRecordSets": [
+    {"Name": "example.com.", "Type": "NS", "TTL": 172800, "ResourceRecords": [{"Value": "ns-1.awsdns-00.org."}, {"Value": "ns-2.awsdns-00.co.uk."}]},
+    {"Name": "example.com.", "Type": "SOA", "TTL": 900, "ResourceRecords": [{"Value": "ns-1.awsdns-00.org. awsdns-hostmaster.amazon.com. 1 7200 900 1209600 86400"}]},
+    {"Name": "app.example.com.", "Type": "A", "TTL": 86400, "ResourceRecords": [{"Value": "203.0.113.10"}]},
+    {"Name": "www.example.com.", "Type": "CNAME", "TTL": 300, "ResourceRecords": [{"Value": "app.example.com"}]},
+    {"Name": "\\052.dev.example.com.", "Type": "A", "TTL": 300, "ResourceRecords": [{"Value": "203.0.113.20"}]},
+    {"Name": "old.example.com.", "Type": "A", "TTL": 300, "ResourceRecords": [{"Value": "203.0.113.99"}]}
+  ]
+}

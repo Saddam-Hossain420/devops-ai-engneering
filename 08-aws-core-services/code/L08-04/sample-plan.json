@@ -1,0 +1,11 @@
+{
+  "_note": "হাতে তৈরি L07-04 plan — Module 08-এর lab-এর জন্য ছোট: দুই AZ, public + private",
+  "vpc": "10.20.0.0/16",
+  "azs": ["a", "b"],
+  "reserved_per_subnet": 5,
+  "avoid": {"office-vpn": "10.0.0.0/16"},
+  "tiers": [
+    {"name": "public", "type": "public", "hosts": 50},
+    {"name": "app", "type": "private", "hosts": 200}
+  ]
+}

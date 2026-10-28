@@ -1,0 +1,19 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "TargetGroups": [
+  {
+   "TargetGroupName": "lab08-app",
+   "Protocol": "HTTP",
+   "Port": 8000,
+   "HealthCheckProtocol": "HTTP",
+   "HealthCheckPath": "/health",
+   "HealthCheckIntervalSeconds": 10,
+   "HealthCheckTimeoutSeconds": 5,
+   "HealthyThresholdCount": 2,
+   "UnhealthyThresholdCount": 2,
+   "Matcher": {
+    "HttpCode": "200"
+   }
+  }
+ ]
+}

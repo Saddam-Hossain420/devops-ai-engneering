@@ -1,0 +1,176 @@
+{
+ "_note": "হাতে তৈরি — `aws resourcegroupstaggingapi get-resources --tag-filters Key=Project,Values=lab08`-এর রূপে; ক্রম ইচ্ছাকৃত এলোমেলো",
+ "ResourceTagMappingList": [
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:vpc/vpc-0lab",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:subnet/subnet-pub-a",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:subnet/subnet-app-a",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:route-table/rtb-public",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:internet-gateway/igw-0lab",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:natgateway/nat-a",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:elastic-ip/eipalloc-0lab",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:security-group/sg-alb",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:security-group/sg-app",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:instance/i-app-a",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1:111122223333:volume/vol-app-a",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ec2:ap-south-1::snapshot/snap-lab08",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:elasticloadbalancing:ap-south-1:111122223333:loadbalancer/app/lab08-alb/50dc6c495c0c9188",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:elasticloadbalancing:ap-south-1:111122223333:targetgroup/lab08-app/943f017f100becff",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:s3:::lab08-uploads-111122223333",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:cloudwatch:ap-south-1:111122223333:alarm:lab08-target-5xx",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:sns:ap-south-1:111122223333:lab08-alerts",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:logs:ap-south-1:111122223333:log-group:/lab08/taskflow",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  },
+  {
+   "ResourceARN": "arn:aws:ssm:ap-south-1:111122223333:parameter/lab08/db-password",
+   "Tags": [
+    {
+     "Key": "Project",
+     "Value": "lab08"
+    }
+   ]
+  }
+ ]
+}

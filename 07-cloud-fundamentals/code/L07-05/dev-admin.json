@@ -1,0 +1,11 @@
+{
+  "_note": "হাতে তৈরি — 'দ্রুত কাজ চালানোর' জন্য একজন developer-কে দেওয়া policy (ইচ্ছাকৃত ঝুঁকিসহ)",
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "EverythingExceptBilling", "Effect": "Allow", "NotAction": ["aws-portal:*", "budgets:*"], "Resource": "*"},
+    {"Sid": "PassAnyRole", "Effect": "Allow", "Action": "iam:PassRole", "Resource": "*"},
+    {"Sid": "S3All", "Effect": "Allow", "Action": "s3:*", "Resource": "*"},
+    {"Sid": "IamWithMfaOnly", "Effect": "Deny", "Action": "iam:*", "Resource": "*",
+     "Condition": {"BoolIfExists": {"aws:MultiFactorAuthPresent": "false"}}}
+  ]
+}

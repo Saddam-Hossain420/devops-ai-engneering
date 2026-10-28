@@ -1,0 +1,11 @@
+[
+  {"action": "s3:GetObject", "resource": "arn:aws:s3:::taskflow-uploads/u/42/avatar.png", "expect": "allow"},
+  {"action": "s3:GetObject", "resource": "arn:aws:s3:::taskflow-uploads/admin/report.csv", "expect": "deny"},
+  {"action": "S3:PutObject", "resource": "arn:aws:s3:::taskflow-uploads/u/1.png", "expect": "allow"},
+  {"action": "s3:DeleteObject", "resource": "arn:aws:s3:::taskflow-uploads/u/1.png", "expect": "deny"},
+  {"action": "s3:ListBucket", "resource": "arn:aws:s3:::taskflow-uploads", "context": {"s3:prefix": "u/42/"}, "expect": "allow"},
+  {"action": "s3:ListBucket", "resource": "arn:aws:s3:::taskflow-uploads", "expect": "deny"},
+  {"action": "secretsmanager:GetSecretValue", "resource": "arn:aws:secretsmanager:ap-south-1:111122223333:secret:taskflow/db-AbCdEf", "expect": "allow"},
+  {"action": "secretsmanager:GetSecretValue", "resource": "arn:aws:secretsmanager:ap-south-1:111122223333:secret:billing/api-key-XyZ", "expect": "deny"},
+  {"action": "ec2:TerminateInstances", "resource": "*", "expect": "deny"}
+]

@@ -19,6 +19,7 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Atomic rename** — একই filesystem-এ `mv`: পাঠক হয় পুরোনো, নয় সম্পূর্ণ নতুন file দেখে — আধা-লেখা কখনো নয়। (04)
 - **ACME / HTTP-01 / DNS-01** — certificate স্বয়ংক্রিয়ভাবে নেওয়ার protocol (Let's Encrypt); domain-এর মালিকানা প্রমাণ web path বা TXT record দিয়ে। (06)
 - **Apex (zone root)** — `example.com` নিজে (`@`); এখানে CNAME রাখা যায় না — A/AAAA বা provider-এর ALIAS। (06)
+- **Alias record (Route 53)** — AWS resource-এর নাম → তার বর্তমান IP; apex-এ চলে, TTL নেই; CNAME-এর বিকল্প। (08)
 
 ## B
 
@@ -35,6 +36,7 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Bisect** — binary search দিয়ে কোন commit regression এনেছে তা খোঁজা; `git bisect run` স্বয়ংক্রিয়; test deterministic হতে হবে। (03)
 - **Blob / tree (Git)** — file-এর content / directory-র তালিকা (নাম → mode + hash); দুটোই content-addressable object। (03)
 - **bats-core** — Bash-এ লেখা test framework: `@test`, `run`, `$status`, `$output`। (04)
+- **Block Public Access (S3)** — account ও bucket-স্তরের চারটি সুইচ, যা public policy ও ACL আটকায়। (08)
 
 ## C
 
@@ -67,6 +69,10 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Correlation / request id** — একটি কাজের সব log লাইন ও service জুড়ে একই ID; `X-Request-ID` header-এ client-কেও ফেরত দেওয়া হয়। (05, 17)
 - **CAA record** — কোন CA এই domain-এর certificate দিতে পারবে (RFC 8659)। (06)
 - **Catch-all default_server** — কোনো server_name না মিললে যে server; নিরাপদ রূপ `return 444`। (06)
+- **Correlated failure** — একই কারণে একাধিক component-এর একসাথে ব্যর্থতা (একই AZ, rack, config push, bug); redundancy-র হিসাবে স্বাধীন ধরা যায় না। (07)
+- **Cost allocation tag** — বিল ভাগ করার জন্য resource-এর tag (owner, env, cost-center); provider-এ চালু করতে হয়, আগের বিলে প্রযোজ্য নয়। (07)
+- **cloud-init / user data** — EC2-এর প্রথম boot-এ root হিসেবে চলা setup (সর্বোচ্চ ১৬ KB); secret নয়। (08)
+- **Credential report** — account-এর সব IAM user-এর password, MFA ও key-এর অবস্থার CSV। (08)
 
 ## D
 
@@ -83,6 +89,8 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Dry-run** — কিছু না বদলে ঠিক কী করত তা দেখানো; আসল run-এর একই সিদ্ধান্তের পথ দিয়ে যেতে হবে। (04)
 - **Daemon thread** — Python-এ যে thread-এর জন্য program শেষে অপেক্ষা করা হয় না; deadline-যুক্ত health check-এ লাগে (`ThreadPoolExecutor`-এর worker daemon নয়)। (05)
 - **dataclass** — Python-এ field ঘোষণা থেকে `__init__`/`__repr__`/`__eq__` স্বয়ংক্রিয়; `frozen=True` = অপরিবর্তনীয় ও hashable। (05)
+- **Deregistration delay (draining)** — target সরানোর আগে চলমান request শেষ হওয়ার সময়; app-এর graceful shutdown-এর সমান বা বেশি। (08)
+- **DependencyViolation** — অন্য resource এখনো ব্যবহার করছে বলে AWS মুছতে দেয় না; মোছার ক্রম ঠিক করুন। (08)
 
 ## E
 
@@ -97,6 +105,8 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Exponential backoff** — প্রতিটি ব্যর্থ চেষ্টার পরে অপেক্ষা দ্বিগুণ; সীমা ও jitter সহ retry। (04)
 - **EX_TEMPFAIL (৭৫)** — `sysexits.h`-এর "সাময়িক ব্যর্থতা, পরে আবার চেষ্টা করুন" — যেমন অন্য run lock ধরে আছে। (04)
 - **Event loop (nginx worker)** — একটি thread epoll দিয়ে হাজার non-blocking connection সামলায়; blocking কাজ পুরো worker থামায়। (06)
+- **Egress (data transfer)** — cloud থেকে internet-এ বা AZ/region-এর মধ্যে যাওয়া data — সাধারণত চার্জযোগ্য; ingress প্রায়ই বিনামূল্যে। (07)
+- **EBS / EFS** — AZ-নির্দিষ্ট network block device / বহু-AZ shared NFS। (08)
 
 ## F
 
@@ -113,6 +123,8 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **fsync** — OS-এর buffer থেকে data disk-এ পাঠানো নিশ্চিত করা; atomic write-এ rename-এর আগে লাগে। (05)
 - **FastCGI** — web server ও দীর্ঘজীবী application process-এর binary protocol; nginx `fastcgi_pass` → PHP-FPM। `SCRIPT_FILENAME` অপরিহার্য। (06)
 - **Fullchain** — leaf + intermediate certificate (leaf আগে); nginx-এর `ssl_certificate`-এ এটাই। (06)
+- **Fault domain** — যে সীমার ভেতরের সব কিছু একটি কারণে একসাথে ব্যর্থ হতে পারে (host, rack, AZ, region)। (07)
+- **FinOps** — engineering, finance ও business মিলে cloud খরচ দেখা, ভাগ করা ও optimize করার অনুশীলন। (07, 29)
 
 ## G
 
@@ -132,6 +144,7 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Health check (active/passive)** — LB নিজে নিয়মিত পরীক্ষা / আসল traffic-এর error দেখে backend সাময়িক বাদ। (02)
 - **HEAD** — বর্তমান branch-এর symbolic ref (বা detached অবস্থায় সরাসরি commit)। (03)
 - **HSTS** — `Strict-Transport-Security` header: browser নির্দিষ্ট সময় শুধু HTTPS ব্যবহার করে; nginx-এ `always` সহ। (06)
+- **Hypervisor (type 1 / type 2)** — VM চালানোর software; type 1 সরাসরি hardware-এ (ESXi, Xen, Hyper-V, KVM), type 2 একটি OS-এর ওপর (VirtualBox)। (07)
 
 ## I
 
@@ -148,6 +161,12 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Internet gateway / NAT gateway** — public IP-সহ instance-এর দুই দিকের Internet পথ / private instance-এর শুধু বাইরের দিকের পথ। (02)
 - **IFS** — word splitting-এর বিভাজক; `"$*"` এর প্রথম অক্ষর দিয়ে জোড়া হয়। (04)
 - **Idempotency key** — client-এর দেওয়া অনন্য ID; server একই key-র request আবার এলে কাজ না করে আগের ফল ফেরত দেয় — POST retry নিরাপদ করে। (05)
+- **IaaS / PaaS / FaaS / SaaS** — service model: provider কতটা stack (hardware → OS → runtime → app) চালায়; বাকিটা আপনার। (07)
+- **iam:PassRole** — একটি role-কে service-এ (instance, function) যুক্ত করার অনুমতি; `*`-এ দিলে privilege escalation-এর পথ — resource ও `iam:PassedToService` দিয়ে সীমিত করুন। (07)
+- **IAM role** — অস্থায়ী credential দেওয়া identity, যা user/service/instance গ্রহণ (assume) করে; long-lived access key-এর বিকল্প। (07)
+- **IMDSv2** — EC2 metadata service-এর token-ভিত্তিক রূপ (`HttpTokens=required`); SSRF দিয়ে credential চুরি কঠিন করে। (08)
+- **Instance profile** — EC2-কে IAM role দেওয়ার পাত্র (ঠিক একটি role)। (08)
+- **IAM Identity Center** — AWS-এর কেন্দ্রীয় login (SSO); মানুষের জন্য অস্থায়ী credential। (08)
 
 ## J
 
@@ -196,6 +215,8 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **NAT (Network Address Translation)** — packet-এর source/destination IP পরিবর্তন করা, যেমন private network থেকে internet-এ যাওয়ার সময়। (02)
 - **NACL (Network ACL)** — cloud subnet-স্তরের stateless firewall; numbered rule, allow ও deny দুটোই। (02)
 - **Negative caching (DNS)** — NXDOMAIN উত্তরও cache হয়, SOA-র শেষ field পর্যন্ত (RFC 2308)। (06)
+- **NotAction / NotResource** — তালিকার বাইরের সব কিছুতে প্রযোজ্য statement; Allow-এর সাথে প্রায় সবসময় অতিরিক্ত ক্ষমতা (নতুন service-ও স্বয়ংক্রিয়ভাবে)। (07)
+- **nofail (fstab)** — device না পেলেও boot চলবে; cloud-এ না থাকলে instance emergency mode-এ আটকে যেতে পারে। (08)
 
 ## O
 
@@ -206,6 +227,9 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **On-call** — নির্দিষ্ট সময়ে production সমস্যায় সাড়া দেওয়ার দায়িত্ব, রাতেও হতে পারে। (00, 18)
 - **OSI / TCP-IP model** — network communication-কে স্তরে ভাগ করার model; প্রতিটি স্তর নিচের স্তরের header-এ মোড়ানো (encapsulation)। (02)
 - **Orphan process** — parent মারা যাওয়ার পরেও চলতে থাকা child (PPID ১); cleanup-এ child বন্ধ করতে হয়। (04)
+- **On-demand / reserved / spot** — cloud pricing model: প্রতিশ্রুতিহীন / ১–৩ বছরের প্রতিশ্রুতিতে ছাড় / উদ্বৃত্ত capacity-তে বড় ছাড় কিন্তু কেড়ে নেওয়া যায়। (07)
+- **Orphaned resource** — মালিক বা ব্যবহার নেই, কিন্তু বিল চলছে (unattached disk, অব্যবহৃত public IP, পুরোনো snapshot)। (07)
+- **Overcommit (vCPU / memory)** — host-এর physical-এর চেয়ে বেশি vCPU বা RAM VM-গুলোকে দেওয়া; CPU-তে সময় ভাগ, memory-তে ballooning/swap — বেশি বিপজ্জনক। (07)
 
 ## P
 
@@ -234,6 +258,8 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Provenance (config)** — একটি config মান কোন উৎস (default/file/env/CLI) থেকে এসেছে। (05)
 - **PHP-FPM / pm.max_children** — PHP-র FastCGI process manager; একসাথে সর্বোচ্চ worker memory থেকে হিসাব করতে হয়। (06)
 - **proxy_pass URI rule** — proxy_pass-এ URI অংশ থাকলে location-এর মেলা prefix বদলে যায়; slash অমিলে `//tasks`, `/v1tasks`। (06)
+- **Private endpoint (VPC endpoint)** — VPC থেকে provider-এর service-এ internet বা NAT ছাড়া পৌঁছানোর পথ; নিরাপত্তা ও NAT খরচ দুটোতেই সুবিধা। (07)
+- **Presigned URL** — SigV4-signed সময়-সীমিত URL; যার হাতে URL, মেয়াদ পর্যন্ত সে-ই access পায়। (08)
 
 ## Q
 
@@ -259,6 +285,9 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Regression test** — একবার পাওয়া bug আবার না ফেরার জন্য লেখা test; আগে ব্যর্থ, fix-এর পরে পাস। (05)
 - **Retry-After** — HTTP header (429/503-এ) — কত সেকেন্ড বা কোন সময় পরে আবার চেষ্টা; client-এর নিজের backoff-এর চেয়ে অগ্রাধিকার। (05)
 - **Rotation (secret)** — secret বদলানো, নিয়মিত বা ফাঁসের পরে; ফাঁস হলে প্রথম কাজ। (05, 19)
+- **Region** — provider-এর একটি ভৌগোলিক এলাকা, কয়েকটি AZ নিয়ে; data residency ও latency-র সিদ্ধান্ত। (07)
+- **Right-sizing** — মাপা ব্যবহার দেখে instance-এর আকার ঠিক করা — বড় হলে অপচয়, ছোট হলে latency। (07)
+- **Resource Groups Tagging API** — service-নিরপেক্ষভাবে একটি tag-এর resource-এর ARN খোঁজা; cleanup-এর ভিত্তি। (08)
 
 ## S
 
@@ -294,6 +323,11 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **SIGPIPE / EPIPE** — পাঠক চলে যাওয়ার পরে pipe-এ লেখা (`… | head`); Python-এ `BrokenPipeError`, Windows-এ `OSError` EINVAL; shell-এর রীতিতে exit ১৪১। (05)
 - **server_name precedence** — exact → দীর্ঘতম `*.x` → দীর্ঘতম `x.*` → প্রথম regex → default_server। (06)
 - **Socket activation (systemd)** — systemd socket ধরে রাখে ও service-কে fd ৩ হিসেবে দেয় (`LISTEN_FDS`); restart-এ connection refused নয়। (06)
+- **Shared responsibility model** — cloud-এ নিরাপত্তা ও নির্ভরযোগ্যতার দায় provider ও customer-এর মধ্যে ভাগ; identity, data ও configuration সবসময় customer-এর। (07)
+- **SPOF (Single point of failure)** — যে একটি component ব্যর্থ হলেই পুরো service বন্ধ। (07)
+- **Steal time (%st)** — guest-এর vCPU প্রস্তুত, কিন্তু hypervisor অন্য guest-কে CPU দিয়েছে — সেই অপেক্ষার সময়। (07)
+- **SigV4 (Signature Version 4)** — AWS request signing: canonical request → string to sign → HMAC-chain signing key। (08)
+- **Session Manager (SSM)** — port 22 না খুলে instance-এ shell। (08)
 
 ## T
 
@@ -314,6 +348,10 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **Test pyramid** — অনেক দ্রুত unit test, কিছু integration, অল্প end-to-end। (05, 11)
 - **Thundering herd / retry storm** — বহু client একসাথে retry করে সবে সেরে ওঠা service-কে আবার ফেলে দেওয়া। (05)
 - **Type hint** — Python-এ parameter/return-এর প্রত্যাশিত type-এর ঘোষণা; runtime-এ যাচাই হয় না — mypy বা নিজের validation। (05)
+- **TCO (Total Cost of Ownership)** — মোট খরচ: বিল বা hardware + বিদ্যুৎ + মানুষের সময় + ঝুঁকি; on-prem বনাম cloud তুলনার ভিত্তি। (07)
+- **Target group / health check** — ALB-এর backend-এর দল; interval × threshold অনুযায়ী সুস্থ/অসুস্থ। (08)
+- **TreatMissingData** — CloudWatch alarm-এ data না এলে: missing, ignore, breaching, notBreaching। (08)
+- **Trust policy** — IAM role-এর resource policy: কে role assume করতে পারে। (08)
 
 ## U
 
@@ -335,6 +373,7 @@ Term-গুলো English-এ রাখা হয়েছে (কারণ docu
 - **VPC peering** — দুই VPC-র সরাসরি সংযোগ; CIDR overlap চলবে না, transitive নয়, দুই দিকে route লাগে। (02)
 - **VPN / WireGuard** — encrypted virtual network link; WireGuard: key pair, AllowedIPs (route + ACL), UDP ৫১৮২০, MTU ১৪২০। (02)
 - **Virtual environment (venv)** — project-এর নিজস্ব `site-packages`; `sys.prefix` ≠ `sys.base_prefix`; base interpreter বদলালে আবার তৈরি। (05)
+- **vCPU** — VM-কে দেওয়া virtual CPU; সাধারণত host-এর একটি hardware thread-এর সময়-ভাগ। (07)
 
 ## W
 

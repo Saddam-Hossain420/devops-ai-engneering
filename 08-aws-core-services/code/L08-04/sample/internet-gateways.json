@@ -1,0 +1,4 @@
+{
+  "_note": "হাতে তৈরি — `aws ec2 describe-internet-gateways`-এর রূপে",
+  "InternetGateways": [{"InternetGatewayId": "igw-0lab", "Attachments": [{"VpcId": "vpc-0lab", "State": "available"}]}]
+}

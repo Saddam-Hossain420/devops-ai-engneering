@@ -1,0 +1,2 @@
+{"vpc": "10.40.0.0/24", "azs": ["a", "b", "c"],
+ "tiers": [{"name": "public", "type": "public", "hosts": 20}, {"name": "app", "type": "private", "hosts": 60}]}

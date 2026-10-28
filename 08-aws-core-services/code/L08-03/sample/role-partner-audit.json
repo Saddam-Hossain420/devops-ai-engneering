@@ -1,0 +1,9 @@
+{
+  "_note": "হাতে তৈরি — বাইরের audit vendor-এর account-কে trust, ExternalId ছাড়া (ইচ্ছাকৃত ভুল); URL-encoded string হিসেবে",
+  "Role": {
+    "RoleName": "partner-audit",
+    "Arn": "arn:aws:iam::111122223333:role/partner-audit",
+    "MaxSessionDuration": 43200,
+    "AssumeRolePolicyDocument": "%7B%22Version%22%3A%222012-10-17%22%2C%22Statement%22%3A%5B%7B%22Effect%22%3A%22Allow%22%2C%22Principal%22%3A%7B%22AWS%22%3A%22arn%3Aaws%3Aiam%3A%3A444455556666%3Aroot%22%7D%2C%22Action%22%3A%22sts%3AAssumeRole%22%7D%5D%7D"
+  }
+}

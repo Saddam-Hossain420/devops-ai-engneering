@@ -1,0 +1,24 @@
+{
+  "_note": "হাতে তৈরি — `aws ec2 describe-route-tables`-এর রূপে; rt-private-b ইচ্ছাকৃতভাবে AZ a-র NAT ব্যবহার করে, rt-legacy-তে মুছে-ফেলা NAT-এর blackhole",
+  "RouteTables": [
+    {"RouteTableId": "rtb-main", "VpcId": "vpc-0lab",
+     "Associations": [{"Main": true, "RouteTableId": "rtb-main", "RouteTableAssociationId": "rtbassoc-main"}],
+     "Routes": [{"DestinationCidrBlock": "10.20.0.0/16", "GatewayId": "local", "State": "active"}]},
+    {"RouteTableId": "rtb-public", "VpcId": "vpc-0lab",
+     "Associations": [{"Main": false, "SubnetId": "subnet-pub-a"}, {"Main": false, "SubnetId": "subnet-pub-b"}],
+     "Routes": [{"DestinationCidrBlock": "10.20.0.0/16", "GatewayId": "local", "State": "active"},
+                {"DestinationCidrBlock": "0.0.0.0/0", "GatewayId": "igw-0lab", "State": "active"}]},
+    {"RouteTableId": "rtb-private-a", "VpcId": "vpc-0lab",
+     "Associations": [{"Main": false, "SubnetId": "subnet-app-a"}],
+     "Routes": [{"DestinationCidrBlock": "10.20.0.0/16", "GatewayId": "local", "State": "active"},
+                {"DestinationCidrBlock": "0.0.0.0/0", "NatGatewayId": "nat-a", "State": "active"}]},
+    {"RouteTableId": "rtb-private-b", "VpcId": "vpc-0lab",
+     "Associations": [{"Main": false, "SubnetId": "subnet-app-b"}],
+     "Routes": [{"DestinationCidrBlock": "10.20.0.0/16", "GatewayId": "local", "State": "active"},
+                {"DestinationCidrBlock": "0.0.0.0/0", "NatGatewayId": "nat-a", "State": "active"}]},
+    {"RouteTableId": "rtb-legacy", "VpcId": "vpc-0lab",
+     "Associations": [{"Main": false, "SubnetId": "subnet-legacy"}],
+     "Routes": [{"DestinationCidrBlock": "10.20.0.0/16", "GatewayId": "local", "State": "active"},
+                {"DestinationCidrBlock": "0.0.0.0/0", "NatGatewayId": "nat-old", "State": "blackhole"}]}
+  ]
+}

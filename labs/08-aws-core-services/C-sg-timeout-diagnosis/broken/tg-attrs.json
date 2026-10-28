@@ -1,0 +1,9 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "Attributes": [
+  {
+   "Key": "deregistration_delay.timeout_seconds",
+   "Value": "30"
+  }
+ ]
+}

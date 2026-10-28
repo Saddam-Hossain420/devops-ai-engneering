@@ -1,0 +1,27 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "LoadBalancers": [
+  {
+   "LoadBalancerArn": "arn:aws:elasticloadbalancing:ap-south-1:111122223333:loadbalancer/app/lab08-alb/1a2b",
+   "LoadBalancerName": "lab08-alb",
+   "DNSName": "lab08-alb-1.ap-south-1.elb.amazonaws.com",
+   "Scheme": "internet-facing",
+   "State": {
+    "Code": "active"
+   },
+   "SecurityGroups": [
+    "sg-alb"
+   ],
+   "AvailabilityZones": [
+    {
+     "ZoneName": "ap-south-1a",
+     "SubnetId": "subnet-pub-a"
+    },
+    {
+     "ZoneName": "ap-south-1b",
+     "SubnetId": "subnet-pub-b"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+{
+  "_warning": "EXAMPLE PRICES ONLY — invented round numbers for practice, NOT any provider's real price. Replace with values from your provider's pricing page/calculator, and note region and date.",
+  "currency": "USD (example)",
+  "compute_per_hour": {
+    "small-vm": 0.02,
+    "medium-vm": 0.08,
+    "large-vm": 0.32,
+    "managed-db-small": 0.05,
+    "managed-db-small-multi-az": 0.10,
+    "load-balancer": 0.025
+  },
+  "storage_gb_month": 0.10,
+  "snapshot_gb_month": 0.05,
+  "egress_gb": 0.09,
+  "nat_gateway_per_hour": 0.045,
+  "nat_processing_gb": 0.045,
+  "cross_az_gb": 0.01
+}

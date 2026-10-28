@@ -1,0 +1,9 @@
+{
+  "_note": "হাতে তৈরি — `aws elbv2 describe-target-groups`-এর রূপে",
+  "TargetGroups": [{
+    "TargetGroupName": "lab08-app", "Protocol": "HTTP", "Port": 8000, "VpcId": "vpc-0lab", "TargetType": "instance",
+    "HealthCheckProtocol": "HTTP", "HealthCheckPort": "traffic-port", "HealthCheckPath": "/",
+    "HealthCheckIntervalSeconds": 30, "HealthCheckTimeoutSeconds": 5,
+    "HealthyThresholdCount": 5, "UnhealthyThresholdCount": 3, "Matcher": {"HttpCode": "200"}
+  }]
+}

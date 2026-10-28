@@ -1,0 +1,13 @@
+{
+  "_note": "হাতে তৈরি — TaskFlow-এর CI deploy role-এ 'দ্রুত কাজ চালাতে' লেখা policy। ইচ্ছাকৃত ঝুঁকিসহ। Account id ও নাম কাল্পনিক।",
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "ArtifactsAll", "Effect": "Allow", "Action": "s3:*", "Resource": "*"},
+    {"Sid": "ReadConfig", "Effect": "Allow", "Action": "ssm:GetParameter*", "Resource": "*"},
+    {"Sid": "PassRoles", "Effect": "Allow", "Action": "iam:PassRole", "Resource": "*"},
+    {"Sid": "EverythingElseForDeploys", "Effect": "Allow", "NotAction": ["iam:*", "organizations:*"], "Resource": "*"},
+    {"Sid": "KeepReleases", "Effect": "Deny", "Action": "s3:DeleteObject",
+     "Resource": "arn:aws:s3:::taskflow-artifacts/*",
+     "Condition": {"Bool": {"aws:MultiFactorAuthPresent": "false"}}}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "_note": "হাতে তৈরি — TaskFlow-এর multi-AZ production (L07-03 two-az) + একটি dev environment",
+  "resources": [
+    {"name": "lb", "env": "prod", "type": "load-balancer", "egress_gb": 300},
+    {"name": "app", "env": "prod", "type": "small-vm", "count": 4, "storage_gb": 20, "cross_az_gb": 100},
+    {"name": "db", "env": "prod", "type": "managed-db-small-multi-az", "storage_gb": 100, "snapshot_gb": 300},
+    {"name": "nat", "env": "prod", "type": "none", "nat_gateways": 2, "nat_gb": 800},
+    {"name": "dev-app", "env": "dev", "type": "medium-vm", "count": 2, "storage_gb": 30},
+    {"name": "dev-db", "env": "dev", "type": "managed-db-small", "storage_gb": 20},
+    {"name": "ci-runner", "env": "ci", "type": "large-vm", "storage_gb": 100}
+  ]
+}

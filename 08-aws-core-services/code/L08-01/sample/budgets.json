@@ -1,0 +1,7 @@
+{
+  "_note": "হাতে তৈরি — `aws budgets describe-budgets --account-id 111122223333`-এর রূপে; পরিমাণ শিক্ষার্থীর নিজের বেছে নেওয়া সীমা, কোনো দাম নয়",
+  "Budgets": [
+    {"BudgetName": "monthly-learning", "BudgetLimit": {"Amount": "10.0", "Unit": "USD"},
+     "TimeUnit": "MONTHLY", "BudgetType": "COST"}
+  ]
+}

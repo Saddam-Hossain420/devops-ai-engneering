@@ -1,0 +1,29 @@
+{
+  "_note": "হাতে তৈরি — `aws ec2 describe-instances`-এর রূপে (filter ছাড়া — tag-হীন instance-ও আসে; শুধু প্রাসঙ্গিক field)",
+  "Reservations": [
+    {"Instances": [
+      {"InstanceId": "i-app-a", "InstanceType": "t3.micro", "State": {"Name": "running"}, "ImageId": "ami-0example1",
+       "PrivateIpAddress": "10.20.0.12", "SubnetId": "subnet-app-a",
+       "IamInstanceProfile": {"Arn": "arn:aws:iam::111122223333:instance-profile/taskflow-app"},
+       "MetadataOptions": {"HttpTokens": "required", "HttpEndpoint": "enabled", "HttpPutResponseHopLimit": 1},
+       "RootDeviceName": "/dev/sda1",
+       "BlockDeviceMappings": [{"DeviceName": "/dev/sda1", "Ebs": {"VolumeId": "vol-app-a", "DeleteOnTermination": true}}],
+       "Tags": [{"Key": "Name", "Value": "lab08-app-a"}, {"Key": "Project", "Value": "lab08"}, {"Key": "Owner", "Value": "ana"}]}]},
+    {"Instances": [
+      {"InstanceId": "i-quick-test", "InstanceType": "t2.micro", "State": {"Name": "running"}, "ImageId": "ami-0example2",
+       "PrivateIpAddress": "10.20.2.20", "PublicIpAddress": "203.0.113.25", "SubnetId": "subnet-pub-a",
+       "MetadataOptions": {"HttpTokens": "optional", "HttpEndpoint": "enabled", "HttpPutResponseHopLimit": 1},
+       "RootDeviceName": "/dev/sda1",
+       "BlockDeviceMappings": [{"DeviceName": "/dev/sda1", "Ebs": {"VolumeId": "vol-quick", "DeleteOnTermination": true}},
+                               {"DeviceName": "/dev/sdf", "Ebs": {"VolumeId": "vol-quick-data", "DeleteOnTermination": false}}],
+       "Tags": [{"Key": "Name", "Value": "quick-test"}]}]},
+    {"Instances": [
+      {"InstanceId": "i-old-stopped", "InstanceType": "t3.small", "State": {"Name": "stopped"}, "ImageId": "ami-0example1",
+       "PrivateIpAddress": "10.20.1.30", "SubnetId": "subnet-app-b",
+       "IamInstanceProfile": {"Arn": "arn:aws:iam::111122223333:instance-profile/taskflow-app"},
+       "MetadataOptions": {"HttpTokens": "required", "HttpEndpoint": "enabled", "HttpPutResponseHopLimit": 2},
+       "RootDeviceName": "/dev/sda1",
+       "BlockDeviceMappings": [{"DeviceName": "/dev/sda1", "Ebs": {"VolumeId": "vol-old", "DeleteOnTermination": false}}],
+       "Tags": [{"Key": "Name", "Value": "lab08-app-old"}, {"Key": "Project", "Value": "lab08"}, {"Key": "Owner", "Value": "ana"}]}]}
+  ]
+}

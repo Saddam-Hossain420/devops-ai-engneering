@@ -24,28 +24,28 @@ AWS account নিরাপত্তা, CLI ও temporary credential, IAM, VPC,
 
 | ID | Lesson | Level | Label / Needs | Status |
 |---|---|---|---|---|
-| L08-01 | AWS account safety: root user, MFA, budget alert | Beginner | 💰 | NOT_STARTED |
-| L08-02 | AWS CLI, profile, temporary credential ও boto3 | Intermediate | 💰 | NOT_STARTED |
-| L08-03 | IAM: policy, role, instance profile | Intermediate | 💰 | NOT_STARTED |
-| L08-04 | VPC design: subnet, route table, gateway | Intermediate | 💰 | NOT_STARTED |
-| L08-05 | Security group ও network ACL | Intermediate | 💰 | NOT_STARTED |
-| L08-06 | EC2 | Intermediate | 💰 | NOT_STARTED |
-| L08-07 | EBS ও EFS | Intermediate | 💰 | NOT_STARTED |
-| L08-08 | S3 | Intermediate | 💰 | NOT_STARTED |
-| L08-09 | Elastic Load Balancing | Intermediate | 💰 | NOT_STARTED |
-| L08-10 | Route 53 | Intermediate | 💰 | NOT_STARTED |
-| L08-11 | CloudWatch | Intermediate | 💰 | NOT_STARTED |
-| L08-12 | Tagging, Cost Explorer ও resource cleanup automation | Intermediate | 💰 | NOT_STARTED |
+| L08-01 | [AWS account safety: root user, MFA, budget alert](L08-01-account-safety-root-mfa-budget.md) | Beginner | 💰 | COMPLETED |
+| L08-02 | [AWS CLI, profile, temporary credential ও boto3](L08-02-aws-cli-profiles-temporary-credentials-boto3.md) | Intermediate | 💰 | COMPLETED |
+| L08-03 | [IAM: policy, role, instance profile](L08-03-iam-policy-role-instance-profile.md) | Intermediate | 💰 | COMPLETED |
+| L08-04 | [VPC design: subnet, route table, gateway](L08-04-vpc-subnet-route-gateway.md) | Intermediate | 💰 | COMPLETED |
+| L08-05 | [Security group ও network ACL](L08-05-security-groups-nacl.md) | Intermediate | 💰 | COMPLETED |
+| L08-06 | [EC2](L08-06-ec2.md) | Intermediate | 💰 | COMPLETED |
+| L08-07 | [EBS ও EFS](L08-07-ebs-efs.md) | Intermediate | 💰 | COMPLETED |
+| L08-08 | [S3](L08-08-s3.md) | Intermediate | 💰 | COMPLETED |
+| L08-09 | [Elastic Load Balancing](L08-09-elastic-load-balancing.md) | Intermediate | 💰 | COMPLETED |
+| L08-10 | [Route 53](L08-10-route53.md) | Intermediate | 💰 | COMPLETED |
+| L08-11 | [CloudWatch](L08-11-cloudwatch.md) | Intermediate | 💰 | COMPLETED |
+| L08-12 | [Tagging, Cost Explorer ও resource cleanup automation](L08-12-tagging-cost-explorer-cleanup.md) | Intermediate | 💰 | COMPLETED |
 
 Lesson file তৈরি হলে এখানে link যোগ হবে। File pattern: `08-aws-core-services/LNN-MM-slug.md`
 
 ## Labs
 
-Lab folder: `labs/08-aws-core-services/`
+Lab folder: [labs/08-aws-core-services/](../labs/08-aws-core-services/README.md) · Module quiz: [assessments/08-aws-core-services/quiz.md](../assessments/08-aws-core-services/quiz.md)
 
-- Level A — S3 bucket ও IAM policy
-- Level B — VPC + EC2 + ALB-এ continuous project
-- Level C — security group ভুলের কারণে timeout diagnose
+- Level A — নিরাপদ S3 bucket ও app-এর least-privilege policy; presigned URL-এর মেয়াদ; সম্পূর্ণ cleanup (💰)
+- Level B — TaskFlow: নিজের VPC → দুই AZ-এ private EC2 → ALB; Module 08-এর চারটি tool দিয়ে যাচাই; cleanup (💰)
+- Level C — `Target.Timeout` incident: পুরোনো SG reference + NACL-এর ফেরত পথ (offline)
 
 ## সংশ্লিষ্ট project
 

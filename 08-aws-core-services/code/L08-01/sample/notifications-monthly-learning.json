@@ -1,0 +1,7 @@
+{
+  "_note": "হাতে তৈরি — `aws budgets describe-notifications-for-budget`-এর রূপে; শুধু ACTUAL আছে, FORECASTED নেই",
+  "Notifications": [
+    {"NotificationType": "ACTUAL", "ComparisonOperator": "GREATER_THAN", "Threshold": 100.0,
+     "ThresholdType": "PERCENTAGE", "NotificationState": "OK"}
+  ]
+}

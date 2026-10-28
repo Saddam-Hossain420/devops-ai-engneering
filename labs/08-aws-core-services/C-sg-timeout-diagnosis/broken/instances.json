@@ -1,0 +1,107 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "Reservations": [
+  {
+   "Instances": [
+    {
+     "InstanceId": "i-a",
+     "InstanceType": "t3.micro",
+     "State": {
+      "Name": "running"
+     },
+     "SubnetId": "subnet-app-a",
+     "PrivateIpAddress": "10.20.0.20",
+     "SecurityGroups": [
+      {
+       "GroupId": "sg-app",
+       "GroupName": "lab08-app"
+      }
+     ],
+     "IamInstanceProfile": {
+      "Arn": "arn:aws:iam::111122223333:instance-profile/taskflow-app"
+     },
+     "MetadataOptions": {
+      "HttpTokens": "required",
+      "HttpEndpoint": "enabled",
+      "HttpPutResponseHopLimit": 1
+     },
+     "RootDeviceName": "/dev/sda1",
+     "BlockDeviceMappings": [
+      {
+       "DeviceName": "/dev/sda1",
+       "Ebs": {
+        "VolumeId": "vol-i-a",
+        "DeleteOnTermination": true
+       }
+      }
+     ],
+     "Tags": [
+      {
+       "Key": "Name",
+       "Value": "i-a"
+      },
+      {
+       "Key": "Project",
+       "Value": "lab08"
+      },
+      {
+       "Key": "Owner",
+       "Value": "me"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "Instances": [
+    {
+     "InstanceId": "i-b",
+     "InstanceType": "t3.micro",
+     "State": {
+      "Name": "running"
+     },
+     "SubnetId": "subnet-app-b",
+     "PrivateIpAddress": "10.20.1.20",
+     "SecurityGroups": [
+      {
+       "GroupId": "sg-app",
+       "GroupName": "lab08-app"
+      }
+     ],
+     "IamInstanceProfile": {
+      "Arn": "arn:aws:iam::111122223333:instance-profile/taskflow-app"
+     },
+     "MetadataOptions": {
+      "HttpTokens": "required",
+      "HttpEndpoint": "enabled",
+      "HttpPutResponseHopLimit": 1
+     },
+     "RootDeviceName": "/dev/sda1",
+     "BlockDeviceMappings": [
+      {
+       "DeviceName": "/dev/sda1",
+       "Ebs": {
+        "VolumeId": "vol-i-b",
+        "DeleteOnTermination": true
+       }
+      }
+     ],
+     "Tags": [
+      {
+       "Key": "Name",
+       "Value": "i-b"
+      },
+      {
+       "Key": "Project",
+       "Value": "lab08"
+      },
+      {
+       "Key": "Owner",
+       "Value": "me"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

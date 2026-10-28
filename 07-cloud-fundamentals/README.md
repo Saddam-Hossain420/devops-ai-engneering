@@ -24,22 +24,22 @@ Vendor-neutral cloud ধারণা: virtualization, service model, region/AZ, 
 
 | ID | Lesson | Level | Label / Needs | Status |
 |---|---|---|---|---|
-| L07-01 | Virtualization ও hypervisor | Beginner |  | NOT_STARTED |
-| L07-02 | IaaS, PaaS, SaaS ও shared responsibility model | Beginner |  | NOT_STARTED |
-| L07-03 | Region, availability zone ও fault domain | Beginner |  | NOT_STARTED |
-| L07-04 | Public বনাম private networking | Beginner |  | NOT_STARTED |
-| L07-05 | IAM, identity ও least privilege | Intermediate |  | NOT_STARTED |
-| L07-06 | Cloud cost model, budget, tagging ও cleanup | Beginner |  | NOT_STARTED |
+| L07-01 | [Virtualization ও hypervisor](L07-01-virtualization-hypervisor.md) | Beginner |  | COMPLETED |
+| L07-02 | [IaaS, PaaS, SaaS ও shared responsibility model](L07-02-service-models-shared-responsibility.md) | Beginner |  | COMPLETED |
+| L07-03 | [Region, availability zone ও fault domain](L07-03-regions-zones-fault-domains.md) | Beginner |  | COMPLETED |
+| L07-04 | [Public বনাম private networking](L07-04-public-private-networking.md) | Beginner |  | COMPLETED |
+| L07-05 | [IAM, identity ও least privilege](L07-05-iam-least-privilege.md) | Intermediate |  | COMPLETED |
+| L07-06 | [Cloud cost model, budget, tagging ও cleanup](L07-06-cost-budget-tagging-cleanup.md) | Beginner |  | COMPLETED |
 
 Lesson file তৈরি হলে এখানে link যোগ হবে। File pattern: `07-cloud-fundamentals/LNN-MM-slug.md`
 
 ## Labs
 
-Lab folder: `labs/07-cloud-fundamentals/`
+Lab folder: [labs/07-cloud-fundamentals/](../labs/07-cloud-fundamentals/README.md) · Module quiz: [assessments/07-cloud-fundamentals/quiz.md](../assessments/07-cloud-fundamentals/quiz.md)
 
-- Level A — local VM তৈরি ও পর্যবেক্ষণ
-- Level B — on-prem বনাম cloud architecture তুলনা
-- Level C — একটি ভুল IAM policy-র ঝুঁকি বিশ্লেষণ
+- Level A — নিজের machine-এ Ubuntu VM: host ও guest-এর `virt_probe.py`, overcommit, load-এ steal, snapshot
+- Level B — on-prem বনাম cloud: availability, খরচ (উদাহরণ-দাম + TCO অনুমান) ও লিখিত সিদ্ধান্ত
+- Level C — CI deploy role-এর ভুল IAM policy-র ঝুঁকি বিশ্লেষণ → least-privilege fix, tool দিয়ে প্রমাণ
 
 ## সংশ্লিষ্ট project
 

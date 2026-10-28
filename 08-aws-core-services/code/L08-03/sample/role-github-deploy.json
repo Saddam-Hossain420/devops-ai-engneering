@@ -1,0 +1,17 @@
+{
+  "_note": "হাতে তৈরি — GitHub Actions OIDC role, কিন্তু sub condition নেই (ইচ্ছাকৃত ভুল)",
+  "Role": {
+    "RoleName": "github-deploy",
+    "Arn": "arn:aws:iam::111122223333:role/github-deploy",
+    "MaxSessionDuration": 3600,
+    "AssumeRolePolicyDocument": {
+      "Version": "2012-10-17",
+      "Statement": [{
+        "Effect": "Allow",
+        "Principal": {"Federated": "arn:aws:iam::111122223333:oidc-provider/token.actions.githubusercontent.com"},
+        "Action": "sts:AssumeRoleWithWebIdentity",
+        "Condition": {"StringEquals": {"token.actions.githubusercontent.com:aud": "sts.amazonaws.com"}}
+      }]
+    }
+  }
+}

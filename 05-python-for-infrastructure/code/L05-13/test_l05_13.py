@@ -128,6 +128,13 @@ class ValidationTest(ServerCase):
         status, headers, _ = self.api.call("PUT", "/tasks")
         self.assertEqual((status, headers["allow"]), (405, "GET, POST"))
 
+    def test_too_large_response_is_not_lost(self) -> None:
+        # Regression: body না পড়ে বন্ধ করলে RST — fix-এর আগে Windows-এ ৩০ বারে ~৮ বার ConnectionAbortedError
+        big = json.dumps({"title": "a" * (tf.MAX_BODY * 4)}).encode()
+        for _ in range(30):
+            status, _, p = self.api.call("POST", "/tasks", raw=big, headers={"Content-Type": "application/json"})
+            self.assertEqual((status, p["error"]["code"]), (413, "too_large"))
+
     def test_sql_injection_attempts_are_inert(self) -> None:
         title = "x'); DROP TABLE tasks; --"
         status, _, task = self.api.call("POST", "/tasks", {"title": title})

@@ -1,0 +1,12 @@
+{
+  "_note": "হাতে তৈরি পরিকল্পনা — TaskFlow, তিন AZ, তিন স্তর",
+  "vpc": "10.20.0.0/16",
+  "azs": ["a", "b", "c"],
+  "reserved_per_subnet": 5,
+  "avoid": {"office-vpn": "10.0.0.0/16", "staging-vpc": "10.21.0.0/16"},
+  "tiers": [
+    {"name": "public", "type": "public", "hosts": 50},
+    {"name": "app", "type": "private", "hosts": 1000},
+    {"name": "data", "type": "isolated", "hosts": 100}
+  ]
+}

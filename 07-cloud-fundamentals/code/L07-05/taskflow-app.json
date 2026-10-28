@@ -1,0 +1,16 @@
+{
+  "_note": "হাতে তৈরি — TaskFlow app-এর least-privilege policy (account id ও নাম কাল্পনিক)",
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "UploadsReadWrite", "Effect": "Allow",
+     "Action": ["s3:GetObject", "s3:PutObject"],
+     "Resource": "arn:aws:s3:::taskflow-uploads/u/*"},
+    {"Sid": "ListOwnPrefix", "Effect": "Allow", "Action": "s3:ListBucket",
+     "Resource": "arn:aws:s3:::taskflow-uploads",
+     "Condition": {"StringLike": {"s3:prefix": ["u/*"]}}},
+    {"Sid": "ReadDbSecret", "Effect": "Allow", "Action": "secretsmanager:GetSecretValue",
+     "Resource": "arn:aws:secretsmanager:ap-south-1:111122223333:secret:taskflow/db-*"},
+    {"Sid": "NeverDeleteBackups", "Effect": "Deny", "Action": ["s3:DeleteObject", "s3:DeleteObjectVersion"],
+     "Resource": "arn:aws:s3:::taskflow-backups/*"}
+  ]
+}

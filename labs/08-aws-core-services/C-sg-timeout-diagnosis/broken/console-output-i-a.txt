@@ -1,0 +1,4 @@
+হাতে তৈরি — `aws ec2 get-console-output --instance-id i-a --latest --output text`-এর অংশ (Lab 08-C)
+[   41.20] cloud-init[1012]: /opt/taskflow/taskflow_api.py: OK
+[   43.87] cloud-init[1012]: taskflow healthy
+[   44.02] cloud-init[1012]: Cloud-init v. 24.1 finished. Datasource DataSourceEc2Local.  Up 44.01 seconds

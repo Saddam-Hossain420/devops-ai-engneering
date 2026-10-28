@@ -43,6 +43,7 @@ from urllib.parse import parse_qs, urlsplit
 
 __version__ = "0.1.0"
 MAX_BODY = 16 * 1024
+MAX_DRAIN = 1024 * 1024        # 413-এর পরে বড়জোর এতটুকু body পড়ে ফেলা (তার বেশি হলে সরাসরি বন্ধ)
 TITLE_MAX = 200
 REQUEST_ID = re.compile(r"^[A-Za-z0-9._-]{1,64}$")
 TASK_PATH = re.compile(r"^/tasks/(\d{1,18})$")
@@ -237,6 +238,20 @@ class Handler(BaseHTTPRequestHandler):
         self._send(err.status, {"error": {"code": err.code, "message": err.message, "request_id": self.request_id}},
                    err.headers)
 
+    def _drain(self, length: int) -> None:
+        """না-পড়া data রেখে socket বন্ধ করলে kernel RST পাঠায় — client তখন 413 উত্তরটাই হারাতে পারে।
+        nginx-এর lingering close-এর মতো: সীমিত পরিমাণ (MAX_DRAIN, ১ সেকেন্ড পর্যন্ত) পড়ে ফেলে দেওয়া।"""
+        left = min(length, MAX_DRAIN)
+        self.connection.settimeout(1.0)
+        try:
+            while left > 0:
+                chunk = self.rfile.read1(min(left, 65536))
+                if not chunk:
+                    break
+                left -= len(chunk)
+        except OSError:
+            pass
+
     def _json_body(self) -> object:
         ctype = self.headers.get("Content-Type", "").split(";")[0].strip().lower()
         if ctype != "application/json":
@@ -246,7 +261,8 @@ class Handler(BaseHTTPRequestHandler):
         except ValueError:
             raise ApiError(HTTPStatus.LENGTH_REQUIRED, "length_required", "Content-Length header required") from None
         if length > MAX_BODY:
-            self.close_connection = True                          # বাকি body পড়ব না — connection বন্ধ
+            self.close_connection = True                          # keep-alive নয় — connection বন্ধ হবে
+            self._drain(length)
             raise ApiError(HTTPStatus.REQUEST_ENTITY_TOO_LARGE, "too_large", f"body larger than {MAX_BODY} bytes")
         raw = self.rfile.read(length)
         try:

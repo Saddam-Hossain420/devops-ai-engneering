@@ -1,0 +1,28 @@
+# হাতে তৈরি ~/.aws/config — account id ও নাম কাল্পনিক
+[default]
+region = ap-south-1
+output = json
+
+[sso-session learn]
+sso_start_url = https://example-learn.awsapps.com/start
+sso_region = ap-south-1
+sso_registration_scopes = sso:account:access
+
+[profile learn-admin]
+sso_session = learn
+sso_account_id = 111122223333
+sso_role_name = AdministratorAccess
+region = ap-south-1
+
+[profile deployer]
+role_arn = arn:aws:iam::111122223333:role/taskflow-deployer
+source_profile = old-keys
+mfa_serial = arn:aws:iam::111122223333:mfa/ana
+
+[profile broken-chain]
+role_arn = arn:aws:iam::111122223333:role/missing-source
+source_profile = does-not-exist
+
+[profile half-sso]
+sso_session = learn
+sso_role_name = ReadOnlyAccess

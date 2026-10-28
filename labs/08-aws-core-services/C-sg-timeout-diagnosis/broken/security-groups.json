@@ -1,0 +1,65 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "SecurityGroups": [
+  {
+   "GroupId": "sg-alb",
+   "GroupName": "lab08-alb",
+   "Description": "recreated 2026-10-27 after ALB rebuild",
+   "IpPermissions": [
+    {
+     "IpProtocol": "tcp",
+     "FromPort": 80,
+     "ToPort": 80,
+     "IpRanges": [
+      {
+       "CidrIp": "0.0.0.0/0"
+      }
+     ],
+     "UserIdGroupPairs": []
+    }
+   ],
+   "IpPermissionsEgress": [
+    {
+     "IpProtocol": "tcp",
+     "FromPort": 8000,
+     "ToPort": 8000,
+     "IpRanges": [],
+     "UserIdGroupPairs": [
+      {
+       "GroupId": "sg-app"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "GroupId": "sg-app",
+   "GroupName": "lab08-app",
+   "IpPermissions": [
+    {
+     "IpProtocol": "tcp",
+     "FromPort": 8000,
+     "ToPort": 8000,
+     "IpRanges": [],
+     "UserIdGroupPairs": [
+      {
+       "GroupId": "sg-alb-old",
+       "Description": "from ALB"
+      }
+     ]
+    }
+   ],
+   "IpPermissionsEgress": [
+    {
+     "IpProtocol": "-1",
+     "IpRanges": [
+      {
+       "CidrIp": "0.0.0.0/0"
+      }
+     ],
+     "UserIdGroupPairs": []
+    }
+   ]
+  }
+ ]
+}

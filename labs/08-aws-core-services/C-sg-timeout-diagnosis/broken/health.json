@@ -1,0 +1,29 @@
+{
+ "_note": "হাতে তৈরি incident — Lab 08-C; account, id ও ঠিকানা কাল্পনিক",
+ "TargetHealthDescriptions": [
+  {
+   "Target": {
+    "Id": "i-a",
+    "Port": 8000
+   },
+   "HealthCheckPort": "8000",
+   "TargetHealth": {
+    "State": "unhealthy",
+    "Reason": "Target.Timeout",
+    "Description": "Request timed out"
+   }
+  },
+  {
+   "Target": {
+    "Id": "i-b",
+    "Port": 8000
+   },
+   "HealthCheckPort": "8000",
+   "TargetHealth": {
+    "State": "unhealthy",
+    "Reason": "Target.Timeout",
+    "Description": "Request timed out"
+   }
+  }
+ ]
+}

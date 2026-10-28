@@ -1,0 +1,8 @@
+{
+  "_note": "হাতে তৈরি — `aws iam get-instance-profile --instance-profile-name taskflow-app`-এর রূপে",
+  "InstanceProfile": {
+    "InstanceProfileName": "taskflow-app",
+    "Arn": "arn:aws:iam::111122223333:instance-profile/taskflow-app",
+    "Roles": [{"RoleName": "taskflow-app", "Arn": "arn:aws:iam::111122223333:role/taskflow-app"}]
+  }
+}

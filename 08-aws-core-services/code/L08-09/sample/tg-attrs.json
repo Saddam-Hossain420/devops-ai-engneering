@@ -1,0 +1,5 @@
+{
+  "_note": "হাতে তৈরি — `aws elbv2 describe-target-group-attributes`-এর রূপে (অংশ)",
+  "Attributes": [{"Key": "deregistration_delay.timeout_seconds", "Value": "5"},
+                 {"Key": "stickiness.enabled", "Value": "false"}]
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "incident": "OpenSSH-এর critical CVE প্রকাশিত, server-এ পুরোনো version",
+    "layer": "os"
+  },
+  {
+    "incident": "Data center-এ বিদ্যুৎ বিভ্রাট, একটি rack বন্ধ",
+    "layer": "physical"
+  },
+  {
+    "incident": "একটি availability zone বন্ধ; app-এর সব instance ঐ AZ-এ ছিল",
+    "layer": "resilience"
+  },
+  {
+    "incident": "Object storage bucket-এর বিষয়বস্তু সবার জন্য খোলা (public)",
+    "layer": "configuration"
+  },
+  {
+    "incident": "প্রাক্তন কর্মীর access key এখনো সক্রিয়",
+    "layer": "identity"
+  },
+  {
+    "incident": "Application-এর একটি dependency-তে SQL injection",
+    "layer": "application"
+  },
+  {
+    "incident": "Runtime-এর Python version-এর support শেষ (EOL)",
+    "layer": "runtime"
+  },
+  {
+    "incident": "Database port 0.0.0.0/0 থেকে খোলা security group",
+    "layer": "network-config"
+  },
+  {
+    "incident": "ভুল করে production table মুছে ফেলা, backup নেই",
+    "layer": "data"
+  },
+  {
+    "incident": "Hypervisor-এর side-channel দুর্বলতা",
+    "layer": "hypervisor"
+  },
+  {
+    "incident": "কর্মীর laptop-এ malware, browser session চুরি",
+    "layer": "endpoint"
+  }
+]
